@@ -1,0 +1,7 @@
+您好! {{ user.username }},
+欢迎来到许炜的博客系统！
+请点击下面连接以验证您的邮箱:
+{{ url_for('auth.confirm', token=token, _external=True ) }}
+在此表示衷心的感谢～
+
+提醒：如果您并未在我的博客系统中注册，请忽略这条邮件！

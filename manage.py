@@ -1,5 +1,5 @@
-#-*- encoding:utf-8 -*-
 #!/usr/bin/env python
+#-*- encoding:utf-8 -*-
 # import os
 import sys
 from app import create_app, db
