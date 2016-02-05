@@ -18,10 +18,16 @@ class RegistrationForm(Form):
     password2 = PasswordField('再次输入密码', validators=[Required()])
     submit = SubmitField('注册')
 
-def validate_email(self, field):
-    if User.query.filter_by(email=field.data).first():
+    def validate_email(self, field):
+        if User.query.filter_by(email=field.data).first():
             raise ValidationError('邮箱已经被注册过了哦～')
 
-def validate_username(self, field):
-    if User.query.filter_by(username=field.data).first():
-        raise ValidationError('用户名已经被使用了')
+    def validate_username(self, field):
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('用户名已经被使用了')
+
+class ChangePasswordForm(Form):
+    old_password = PasswordField('旧密码', validators=[Required()])
+    password = PasswordField('新密码', validators=[Required(), EqualTo('password2', message='新密码的两次输入必须一致！')])
+    password2 = PasswordField('再次输入密码', validators=[Required()])
+    submit = SubmitField('修改')

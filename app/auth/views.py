@@ -3,7 +3,7 @@
 
 from flask import  render_template, redirect, request, url_for, flash
 from flask.ext.login import login_required, login_user, logout_user, current_user
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, ChangePasswordForm
 from ..models import User
 from . import auth
 from .. import db
@@ -23,7 +23,9 @@ def login():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit() \
+    and not form.validate_email(form.email.data) \
+    and not form.validate_username(form.username.data):
         user = User(email=form.email.data,
                     username=form.username.data,
                     password=form.password.data)
@@ -57,7 +59,7 @@ def confirm(token):
 @auth.route('/secret')
 @login_required
 def secret():
-    return '抱歉，只有已登入的用户方能访问该网页！'
+    return '这是只有已登入的用户方能访问的网页禁区！'
 
 @auth.before_app_request
 def before_request():
@@ -80,3 +82,17 @@ def resend_confirmation():
     send_email(current_user.email, '确认您的帐号', 'auth/email/confirm', user=current_user, token=token)
     flash('一个新的认证邮件已经发送到您的邮箱。')
     return redirect(url_for('main.index'))
+
+@auth.route('/change-password', methods=['GET','POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if current_user.verify_password(form.old_password.data):
+            current_user.password = form.password.data
+            db.session.add(current_user)
+            flash('密码修改成功！')
+            return redirect(url_for('main.index'))
+        else:
+            flash('旧密码错误')
+    return render_template('auth/change_password.html', form = form)
