@@ -44,6 +44,10 @@ class User(UserMixin, db.Model):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'confirm': self.id}) # 将自身id生成令牌字符串
 
+    def generate_reset_password_token(self, expiration=3600):
+        s = Serializer(current_app.config['RESET_KEY'], expiration)
+        return s.dumps({'reset':self.id})
+
     def confirm(self, token):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
@@ -54,4 +58,14 @@ class User(UserMixin, db.Model):
             return False
         self.confirmed = True
         db.session.add(self)
+        return True
+
+    def confirm_reset(self, token):
+        s = Serializer(current_app.config['RESET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('reset') != self.id:
+            return False
         return True

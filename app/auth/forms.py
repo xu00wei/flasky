@@ -31,3 +31,13 @@ class ChangePasswordForm(Form):
     password = PasswordField('新密码', validators=[Required(), EqualTo('password2', message='新密码的两次输入必须一致！')])
     password2 = PasswordField('再次输入密码', validators=[Required()])
     submit = SubmitField('修改')
+
+class ResetPasswordRequiredForm(Form):
+    email = StringField('邮箱', validators=[Required(), Email()])
+    submit = SubmitField('注册')
+
+class ResetPasswordForm(Form):
+    email = StringField('邮箱', validators=[Required(), Email()])
+    password = PasswordField('新密码', validators=[Required(),EqualTo('password2', message='新密码的两次输入必须一致！')])
+    password2 = PasswordField('再次输入密码', validators=[Required()])
+    submit = SubmitField('重置')
