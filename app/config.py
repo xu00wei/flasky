@@ -7,6 +7,7 @@ basedir = os.path.abspath(os.path.dirname(__file__)) # 获取该文本的绝对�
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'MyFristFlakyBlogKuangJiaLLL' # 可以在环境中设定，但提供一个默认值
     RESET_KEY = os.environ.get('RESET_KEY') or 'MyResetPasswordKeyWithFlaskHHH'
+    FLASK_ADMIN = '1129116069@qq.com'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = 'True'
     FLASKY_MAIL_SUBJECT_PREFIX = 'Flasky'
     SQLALCHEMY_TRACK_MODIFICATIONS = True

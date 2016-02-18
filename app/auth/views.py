@@ -24,8 +24,8 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit() \
-    and not form.validate_email(form.email.data) \
-    and not form.validate_username(form.username.data):
+    and not form.validate_email(form.email) \
+    and not form.validate_username(form.username):
         user = User(email=form.email.data,
                     username=form.username.data,
                     password=form.password.data)
