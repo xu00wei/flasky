@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-from flask import render_template, session, redirect, url_for
+from flask import render_template, session, redirect, url_for, abort
 from datetime import datetime
 from . import main
 from .forms import NameForm
@@ -27,6 +27,13 @@ def index():
     return render_template('index.html', form = form, name = session.get('name'),
                            known = session.get('known', False), current_time = datetime.utcnow())
 
+@main.route('/user/<username>')
+def user(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        abort(404)
+    return render_template('user.html',user=user)
+
 @main.route('/admin')
 @login_required
 @admin_required
@@ -38,3 +45,4 @@ def for_admins_only():
 @permission_required(Permission.MODERATE_COMMENTS)
 def for_moderators_only():
     return "当你看到这段文字，你已经拥有了审核人的权限！"
+

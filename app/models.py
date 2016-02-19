@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
 from app import db
+from datetime import datetime
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from . import login_manager
 
@@ -67,6 +68,11 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     confirmed = db.Column(db.Boolean, default=False)
+    realname = db.Column(db.String(64))
+    location = db.Column(db.String(128))
+    about_me = db.Column(db.Text())
+    create_date = db.Column(db.DateTime(), default=datetime.utcnow)
+    last_login_date = db.Column(db.DateTime(), default=datetime.utcnow)
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -123,4 +129,6 @@ class User(UserMixin, db.Model):
             return False
         return True
 
-
+    def up_date_time(self):
+        self.last_login_date = datetime.utcnow()
+        db.session.add(self)

@@ -63,11 +63,12 @@ def secret():
 
 @auth.before_app_request
 def before_request():
-    if current_user.is_authenticated \
-        and not current_user.confirmed \
+    if current_user.is_authenticated:
+        current_user.up_date_time()
+        if not current_user.confirmed \
         and request.endpoint[:5] != 'auth.' \
         and request.endpoint != 'static':
-        return redirect(url_for('auth.unconfirmed'))
+            return redirect(url_for('auth.unconfirmed'))
 
 @auth.route('/unconfirmed')
 def unconfirmed():
@@ -127,3 +128,4 @@ def reset_password(token):
             flash('您的邮箱有误！')
             return redirect(url_for('main.index'))
     return render_template('auth/reset_password.html', form=form)
+
