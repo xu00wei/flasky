@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-from flask import render_template, redirect, url_for, abort, flash
+from flask import render_template, redirect, url_for, abort, flash, request
 # from datetime import datetime
 from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm
 from .. import db
 from ..models import User, Permission, Role, Post
-from flask.ext.login import login_required, current_user
+from flask.ext.login import login_required, current_user, current_app
 from ..decorators import admin_required, permission_required
 
 # @main.route('/', methods=['GET','POST'])
