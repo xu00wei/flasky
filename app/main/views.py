@@ -4,7 +4,7 @@
 from flask import render_template, redirect, url_for, abort, flash, request
 # from datetime import datetime
 from . import main
-from .forms import PostForm, EditProfileForm, EditProfileAdminForm
+from .forms import PostForm, EditProfileForm, EditProfileAdminForm, EditPostForm
 from .. import db
 from ..models import User, Permission, Role, Post
 from flask.ext.login import login_required, current_user, current_app
@@ -40,6 +40,24 @@ def index():
     # posts = Post.query.order_by(Post.timestamp.desc()).all()
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts, pagination=pagination)
+
+@main.route('/post/<int:id>')
+def post(id):
+    post = Post.query.get_or_404(id)
+    return render_template('post.html', post=post)
+
+@main.route('/edit-post/<id>', methods=['GET', 'POST'])
+def edit_post(id):
+    post = Post.query.get_or_404(id)
+    form = EditPostForm()
+    if form.validate_on_submit():
+        post.body = form.body.data
+        db.session.add(post)
+        flash('编辑成功＾－＾')
+    form.body.data = post.body
+    return render_template('edit_post.html', form=form)
+
+
 
 @main.route('/user/<username>')
 def user(username):

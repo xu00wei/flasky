@@ -3,10 +3,12 @@
 }
 .profile-header {
     min-height: 260px;
-    margin-left: 280px;
+    margin-left: 300px;
 }
 ul.posts {
     list-style-type: none;
+    width: 100%:
+    float: left;
     padding: 0px;
     margin: 16px 0px 0px 0px;
     border-top: 1px solid #e0e0e0;
@@ -30,4 +32,50 @@ div.post-thumbnail {
 div.post-content {
     margin-left: 48px;
     min-height: 48px;
+}
+div.article-author{
+    height: 180px;
+    border-bottom: thin solid;
+}
+a.btn-editpost{
+    float: right;
+}
+a.article-username{
+     font-size: 30px;
+}
+div.article-head{
+    float:left;
+    width:20%;
+}
+div.article-body{
+     margin-top:10px;
+}
+div.article-userinfo{
+    float:left;
+    height:150px;
+    width:80%;
+}
+textarea.form-control{
+    height: 400px;
+    width: 550px;
+}
+textarea.flask-pagedown-input{
+    float: left;
+    background-color:rgba(45, 45, 45, 0.95);
+    color:azure;
+}
+div.flask-pagedown-preview{
+    float: left;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: gray;
+    overflow:scroll;
+    padding: 10px;
+    margin-left: 10px;
+    height: 400px;
+    width: 550px;
+}
+#submit{
+    margin-top:5px;
 }
