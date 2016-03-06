@@ -62,6 +62,13 @@ class AnonymousUser(AnonymousUserMixin):
 
 login_manager.anonymous_user = AnonymousUser
 
+
+class Follow(db.Model):
+    __tablename__ = 'follows'
+    follower_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    followed_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
@@ -70,12 +77,24 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     confirmed = db.Column(db.Boolean, default=False)
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
     real_name = db.Column(db.String(64))
     location = db.Column(db.String(128))
     about_me = db.Column(db.Text())
     create_date = db.Column(db.DateTime(), default=datetime.utcnow)
     last_login_date = db.Column(db.DateTime(), default=datetime.utcnow)
+
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
+    followed = db.relationship('Follow',
+                               foreign_keys=[Follow.follower_id],
+                               backref=db.backref('follower', lazy='joined'),
+                               lazy='dynamic',
+                               cascade='all, delete-orphan'
+                               )
+    followers = db.relationship('Follow',
+                                foreign_keys=[Follow.followed_id],
+                                backref=db.backref('followed', lazy='joined'),
+                                lazy='dynamic',
+                                cascade='all, delete-orphan')
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -85,6 +104,7 @@ class User(UserMixin, db.Model):
             else:
                 self.role_id = Role.query.filter_by(default=True).first().id
 
+    # 生成仿造博客及用户
     @staticmethod
     def generate_fake(count=1000):
         from sqlalchemy.exc import IntegrityError
@@ -106,6 +126,7 @@ class User(UserMixin, db.Model):
             except IntegrityError:
                 db.session.rollback()
 
+    # 判断用户权限
     def can(self, permissions):
         return self.role is not None and (self.role.permissions & permissions) == permissions
 
@@ -153,10 +174,28 @@ class User(UserMixin, db.Model):
             return False
         return True
 
+    # 关注
+    def follow(self, user):
+        if not self.is_following(user):
+            f = Follow(follower=self, followed=user)
+            db.session.add(f)
+
+    def unfollow(self, user):
+        f = self.followed.filter_by(followed_id=user.id).first()
+        if f:
+            db.session.delete(f)
+
+    def is_following(self, user):
+        return self.followed.filter_by(followed_id=user.id).first() is not None
+
+    def is_followed_by(self, user):
+        return self.followers.filter_by(follower_id=user.id).first() is not None
+
     def up_date_time(self):
         self.last_login_date = datetime.utcnow()
         db.session.add(self)
 
+    # 生成用户头像
     def gravatar(self, size=100, default='identicon', rating='g'):
         if request.is_secure:
             url = 'https://secure.gravatar.com/avatar'
@@ -188,6 +227,7 @@ class Post(db.Model):
             db.session.add(p)
             db.session.commit()
 
+    # markdown的ＨＴＭＬ客户端转化
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
         allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em',
@@ -196,3 +236,5 @@ class Post(db.Model):
         target.body_html = bleach.linkify(bleach.clean(origin_html, tags=allowed_tags, strip=True))
 
 db.event.listen(Post.body, 'set', Post.on_changed_body)
+
+

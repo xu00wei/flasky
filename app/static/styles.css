@@ -5,6 +5,10 @@
     min-height: 260px;
     margin-left: 300px;
 }
+ul {
+    padding: 0px;
+}
+
 ul.posts {
     list-style-type: none;
     width: 100%:
@@ -19,6 +23,10 @@ ul.posts li.post {
 }
 ul.posts li.post:hover {
     background-color: #f0f0f0;
+}
+ul.followed-by{
+    background-color: #E3E8E6;
+    width: 100%;
 }
 div.post-date {
     float: right;
@@ -46,6 +54,22 @@ a.article-username{
 div.article-head{
     float:left;
     width:20%;
+}
+div.followed-by{
+    text-align: center;
+    height: 350px;
+    background-color:lightblue;
+}
+div.user-img{
+    height: 150px;
+    padding: 40px;
+    background-color: darkgray;
+}
+div.followed-info{
+    margin-top: 100px;
+}
+a.back-main{
+    margin-right: 10px;
 }
 div.article-body{
      margin-top:10px;
@@ -75,6 +99,33 @@ div.flask-pagedown-preview{
     margin-left: 10px;
     height: 400px;
     width: 550px;
+}
+div.fans-icon{
+    padding-left: 20%;
+}
+li.fans{
+    list-style-type: none;
+    width: 25%;
+    height: 300px;
+    padding: 25px;
+    border: 4px solid #FFFFFF;
+    border-left: none;
+    border-bottom: none;
+    background: #E3E8E6;
+    float: left;
+}
+div.fans-profile{
+    margin: 5px;
+    width: 80%;
+}
+#follower-name{
+    font-size: 25px;
+    width: 55%;
+    float: left;
+    text-align: center;
+}
+#follower-profile{
+    float: left;
 }
 #submit{
     margin-top:5px;

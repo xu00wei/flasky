@@ -121,3 +121,24 @@ def for_admins_only():
 def for_moderators_only():
     return "当你看到这段文字，你已经拥有了审核人的权限！"
 
+
+@main.route('/follow/<username>', methods=['GET', 'POST'])
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    current_user.follow(user)
+    return redirect(request.referrer)
+
+@main.route('/unfollow/<username>')
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    current_user.unfollow(user)
+    return redirect(request.referrer)
+
+@main.route('/followers/<username>')
+def followers(username):
+    user = User.query.filter_by(username=username).first()
+    page = request.args.get('page', 1, type=int)
+    pagination = user.followers.paginate(page)
+    follows = [{'user':item.follower, 'timestamp':item.timestamp}
+               for item in pagination.items]
+    return render_template('followers.html', user=user, endpoint='.followers', pagination=pagination, follows=follows)

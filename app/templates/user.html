@@ -4,6 +4,7 @@
 
 
 <div class="page-header">
+
     <div>
         <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(260) }}">
     </div>
@@ -21,7 +22,7 @@
         {% endif %}
 
         {% if current_user.is_administrator() %}
-        <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        <p>邮箱:<a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
         {% endif %}
 
         {% if user.about_me %}
@@ -35,18 +36,24 @@
         <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">
             更改资料
         </a>
+        {% elif current_user.is_following(user) %}
+        <a href="{{ url_for('.unfollow', username=user.username) }}" class="following btn btn-default" > 已关注</a>
+        {% else %}
+        <a href="{{ url_for('.follow', username=user.username) }}" class="following btn btn-default" > 关注</a>
         {% endif %}
-
         {% if current_user.is_administrator() %}
         <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">
             编辑用户资料
         </a>
+        {% endif %}
     </div>
-    {% endif %}
     
 </div>
 
 <h3>{{ user.username }}的博客列表</h3>
+<a href="{{ url_for('.followers', username=user.username) }}"> 粉丝 <span class="badge">{{ user.followers.count() }}</span> </a>
+
 {% include '_posts.html' %}
 
 {% endblock %}
+
