@@ -1,0 +1,27 @@
+<div class="comment-body">
+    <ul class="posts">
+        {% for comment in comments %}
+        <li class="post">
+        <div class="comment-img"><img src="{{ comment.author.gravatar(40)  }}"></div>
+        <div class="comment-info">
+            <div>{{ comment.author.username }}<div class="time">{{ moment().fromTime(comment.timestamp) }}</div></div>
+            {% if comment.disabled and not censor %}
+            <p>抱歉！该评论被协管员禁了</p>
+            {% else %}
+            <p>{{ comment.body }}</p>
+            {% endif %}
+        </div>
+        {% if censor %}
+            <br>
+            <div class="able-or-not">
+            {% if comment.disabled %}
+            <a class="btn btn-default btn-xs" href="{{ url_for('.able_or_not', id=comment.id, page=page) }}">取消禁止</a>
+            {% else %}
+            <a class="btn btn-danger btn-xs" href="{{ url_for('.able_or_not', id=comment.id, page=page) }}">禁止评论</a>
+            {% endif %}
+            </div>
+        {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>

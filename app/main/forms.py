@@ -48,3 +48,7 @@ class PostForm(Form):
 class EditPostForm(Form):
     body = PageDownField(validators=[Required()])
     submit = SubmitField('提交修改')
+
+class CommentForm(Form):
+    body = StringField('留个小脚印吧~', validators=[Required()])
+    submit = SubmitField('提交')

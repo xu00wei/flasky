@@ -8,12 +8,26 @@
 ul {
     padding: 0px;
 }
-
+div.comment-img{
+    float: left;
+    margin-right: 10px;
+}
+div.comment-form{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+div.comment-info div.time{
+    float: right;
+}
+div.comments li.post{
+    margin-left: 30px;
+}
 ul.posts {
     list-style-type: none;
     width: 100%:
     float: left;
     padding: 0px;
+    margin-top: 10px;
 }
 ul.posts li.post {
     padding: 8px;
@@ -28,6 +42,11 @@ div.post-hight{
 ul.followed-by{
     background-color: #E3E8E6;
     width: 100%;
+}
+div.comment{
+     border-top: thin solid;
+     padding-top: 10px;
+     padding-left: 5px;
 }
 div.post-date {
     float: right;
@@ -46,8 +65,11 @@ div.article-author{
     height: 180px;
     border-bottom: thin solid;
 }
+div.article-btn-edit{
+    text-align: right;
+}
 a.btn-editpost{
-    float: right;
+    margin-top: 20px;
 }
 a.article-username{
      font-size: 30px;
@@ -74,11 +96,22 @@ a.back-main{
 }
 div.article-body{
      margin-top:10px;
+     padding-left: 10px;
+     padding-bottom: 5px;
 }
 div.article-userinfo{
     float:left;
     height:150px;
     width:80%;
+}
+div.no-post{
+     font-size: 50px;
+     width: 100%;
+     text-align: center;
+     margin-top: 100px;
+}
+div.able-or-not{
+    text-align: right;
 }
 textarea.form-control{
     height: 400px;
@@ -133,5 +166,5 @@ div.fans-profile{
     float: left;
 }
 #submit{
-    margin-top:5px;
+    margin-top:10px;
 }

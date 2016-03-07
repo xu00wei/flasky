@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% import '_macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
 {% block title %} 博客文章 {% endblock %}
 
 
@@ -29,4 +30,16 @@
     </div>
     {% endif %}
 </div>
+
+<div class="comment">
+    <h4>相关评论</h4>
+    <div class="comment-form">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="comments">
+        {% include '_comments.html' %}
+    </div>
+</div>
+
+{{ macros.pagination_widget(pagination, '.post', id = post.id) }}
 {% endblock %}
