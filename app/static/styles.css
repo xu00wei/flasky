@@ -14,8 +14,6 @@ ul.posts {
     width: 100%:
     float: left;
     padding: 0px;
-    margin: 16px 0px 0px 0px;
-    border-top: 1px solid #e0e0e0;
 }
 ul.posts li.post {
     padding: 8px;
@@ -23,6 +21,9 @@ ul.posts li.post {
 }
 ul.posts li.post:hover {
     background-color: #f0f0f0;
+}
+div.post-hight{
+    margin-bottom: 25px;
 }
 ul.followed-by{
     background-color: #E3E8E6;
@@ -99,6 +100,10 @@ div.flask-pagedown-preview{
     margin-left: 10px;
     height: 400px;
     width: 550px;
+}
+div.fans{
+    width: 100%;
+    float: left;
 }
 div.fans-icon{
     padding-left: 20%;

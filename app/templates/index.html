@@ -22,6 +22,12 @@
     <div class="post-hight">
         {{ wtf.quick_form(form) }}
     </div>
+    <div>
+    <ul class="nav nav-tabs nav-justified">
+        <li {% if not show_followed %} class="active" {% endif %}><a href="{{ url_for('.show_all') }}" >所有博客</a></li>
+        <li {% if show_followed %} class="active" {% endif %}><a href="{{ url_for('.show_followed') }}" >关注的博客</a></li>
+    </ul>
+    </div>
     {% include '_posts.html' %}
     <div class="pagination">
         {{ macros.pagination_widget(pagination, '.index') }}

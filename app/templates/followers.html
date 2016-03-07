@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% import '_macros.html' as macro %}
+{% import '_macros.html' as macros %}
 
 {% block page_content %}
 
@@ -28,19 +28,13 @@
             {% if current_user != follower.user %}
             <li class="fans">
                 <div class="fans-icon">
-                    <img src="{{ follower.user.gravatar(100) }}">
+                    <img src="{{ follower.user.gravatar(100) }}" class="img-circle">
                 </div>
                 <div class="fans-profile">
                     <div id="follower-name">
-                        <a href="{{ url_for('.user', username=follower.user.username) }}">{{ follower.user.username }}&nbsp;&nbsp; </p>
+                        <a href="{{ url_for('.user', username=follower.user.username) }}">{{ follower.user.username }}&nbsp;&nbsp; </a>
                     </div>
-                    <div id="is-follow-or-not">
-                        {% if current_user.is_following(follower.user) %}
-                        <a href="{{ url_for('.unfollow', username=follower.user.username) }}" class="btn btn-default follow">已关注</a>
-                        {% else %}
-                        <a href="{{ url_for('.follow', username=follower.user.username) }}" class="btn btn-default follow">关注</a>
-                        {% endif %}
-                    </div>
+                    <div id="is-follow-or-not">{{ macros.follow_or_not( follower.user, current_user ) }}</div>
                     <div id="follower-profile">
                         <p>邮箱:<a href=" mailto:{{ follower.user.email }}"> {{ follower.user.email }} </a></p>
                         <p>{{ follower.user.location }}</p>
@@ -52,7 +46,10 @@
         {% endfor %}
     </ul>
 </div>
-<div ></div>
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, endpoint, username=user.username) }}
+</div>
+
 {% endblock %}
 <hr>
 

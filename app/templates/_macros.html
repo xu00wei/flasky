@@ -1,7 +1,7 @@
 {% macro pagination_widget(pagination, endpoint) %}
 <ul class="pagination">
     <li{% if not pagination.has_prev %} class="disabled" {% endif %}>
-        <a href="{% if pagination.has_prev %}>
+        <a href="{% if pagination.has_prev %}
             {{ url_for(endpoint, page = pagination.page - 1, **kwargs) }}
             {% else %}#{% endif %}">
             &laquo;
@@ -27,4 +27,13 @@
     </li>
 </ul>
 {% endmacro %}
+
+{% macro follow_or_not(user, current_user) %}
+    {% if current_user.is_following(user) %}
+    <a href="{{ url_for('.unfollow', username=user.username) }}" class="btn btn-default follow">已关注</a>
+    {% else %}
+    <a href="{{ url_for('.follow', username=user.username) }}" class="btn btn-default follow">关注</a>
+    {% endif %}
+{% endmacro %}
+
 
