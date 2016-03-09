@@ -19,7 +19,7 @@ def get_comments():
         'next_page': next_page,
         'count': pagination.total
     })
-@api.route('/post/<int:id>/comments/')
+@api.route('/posts/<int:id>/comments/')
 def get_post_comments(id):
     post = Post.query.filter_by(id=id).first()
     page = request.args.get('page', 1, type=int)
@@ -31,12 +31,12 @@ def get_post_comments(id):
         prev_page = page - 1
     if pagination.has_next:
         next_page = page + 1
-        return jsonify({
-            'comments':[comment.to_json() for comment in comments],
-            'prev_page': prev_page,
-            'next_page': next_page,
-            'count': pagination.total
-        })
+    return jsonify({
+        'comments':[comment.to_json() for comment in comments],
+        'prev_page': prev_page,
+        'next_page': next_page,
+        'count': pagination.total
+})
 
 @api.route('/comments/<int:id>')
 def get_comment(id):
