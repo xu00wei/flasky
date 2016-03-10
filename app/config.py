@@ -7,19 +7,19 @@ basedir = os.path.abspath(os.path.dirname(__file__)) # 获取该文本的绝对�
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'MyFristFlakyBlogKuangJiaLLL' # 可以在环境中设定，但提供一个默认值
     RESET_KEY = os.environ.get('RESET_KEY') or 'MyResetPasswordKeyWithFlaskHHH'
-    FLASK_ADMIN = '1129116069@qq.com'
+    FLASK_ADMIN = 'xu0.0wei@qq.com'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = 'True'
     FLASKY_MAIL_SUBJECT_PREFIX = 'Flasky'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     FLASKY_POSTS_PER_PAGE = 20
     FLASKY_COMMENTS_PER_PAGE = 8
     FLASKY_COMMENTS_MANAGE_PER_PAGE = 25
-    FLASKY_MAIL_SENDER = '1129116069@qq.com'
+    FLASKY_MAIL_SENDER = 'xu0.0wei@qq.com'
     MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = True # 启用传输层安全协议
-    MAIL_USERNAME = '1129116069'
-    MAIL_PASSWORD = 'pwemtncswvfabaaj'# 腾讯以授权码为密码
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
     @staticmethod
     def init_app(app):
@@ -27,14 +27,14 @@ class Config:
 
 class DevelopmentConfig(Config):
     # DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:030034@localhost/flasky'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'mysql://root:030034@localhost/flasky'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'mysql://root:030034@localhost/flasky'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
 
 config = {
     'development':DevelopmentConfig,
