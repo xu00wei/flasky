@@ -11,7 +11,9 @@
         <p><a class="article-username" href="{{ url_for('main.user', username=post.author.username) }}"> {{ post.author.username }}</a></p>
         <p> email:&nbsp;{{ post.author.email }} </p>
         <p> {{ post.author.about_me }}</p>
+        {% if not current_user.username == post.author.username %}
         {{ macros.follow_or_not(post.author, current_user) }}
+        {% endif %}
     </div>
 
 </div>

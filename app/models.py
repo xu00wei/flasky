@@ -242,7 +242,6 @@ class Post(db.Model):
     body_html = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
 
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
@@ -283,7 +282,7 @@ class Post(db.Model):
 db.event.listen(Post.body, 'set', Post.on_changed_body)
 
 class Comment(db.Model):
-    __tablename__ = 'commit'
+    __tablename__ = 'comment'
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)

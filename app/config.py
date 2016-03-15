@@ -18,7 +18,7 @@ class Config:
     MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = True # 启用传输层安全协议
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'xu0.0wei'
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
     @staticmethod
