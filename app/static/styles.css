@@ -8,19 +8,30 @@
 ul {
     padding: 0px;
 }
-div.comment-img{
+li.post div.img{
     float: left;
     margin-right: 10px;
+}
+li.post div.head{
+    height: 50px;
+    width: 100%;
 }
 div.comment-form{
     margin-left: 30px;
     margin-top: 30px;
 }
-div.comment-info div.time{
+li.post div.time{
     float: right;
 }
 div.comments li.post{
     margin-left: 30px;
+}
+li.post div.authorname{
+    float: left;
+}
+ul.posts li.post div.post-body{
+     height: 100px;
+     overflow: hidden;
 }
 ul.posts {
     list-style-type: none;

@@ -21,7 +21,7 @@
         </p>
         {% endif %}
 
-        {% if current_user.is_administrator() %}
+        {% if user.is_administrator() %}
         <p>邮箱:<a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
         {% endif %}
 

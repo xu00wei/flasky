@@ -11,14 +11,16 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = 'True'
     FLASKY_MAIL_SUBJECT_PREFIX = 'Flasky'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    FLASKY_POSTS_PER_PAGE = 20
+    FLASKY_POSTS_PER_PAGE = 10
     FLASKY_COMMENTS_PER_PAGE = 8
-    FLASKY_COMMENTS_MANAGE_PER_PAGE = 25
+    FLASKY_COMMENTS_MANAGE_PER_PAGE = 20
     FLASKY_MAIL_SENDER = 'xu0.0wei@qq.com'
     MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = True # 启用传输层安全协议
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'xu0.0wei'
+    # MAIL_USERNAME = os.environ.get('MAILGUN_USERNAME')
+    # MAIL_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
     @staticmethod
@@ -34,7 +36,8 @@ class TestingConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('PRODUCTION_DATABASE_URL')
+
 
 config = {
     'development':DevelopmentConfig,

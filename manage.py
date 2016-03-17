@@ -19,6 +19,14 @@ Migrate = Migrate(app, db)
 def make_shell_context():
     return dict(app=app, db=db, User=User, Role=Role, Post=Post)
 
+@manager.command
+def deploy():
+    ''' 自动配置任务 '''
+    from flask.ext.migrate import upgrade
+    from app.models import Role
+    upgrade()
+    Role.insert_roles()
+
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
 
