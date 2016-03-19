@@ -16,6 +16,27 @@ li.post div.head{
     height: 50px;
     width: 100%;
 }
+div.head-show{
+    font-size: 45px;
+    text-align: center;
+    height: 400px;
+    background: url(/static/head_show.jpg) no-repeat  center center;
+    background-size: cover;
+}
+div.head-show div.color{
+    background-color: black;
+    height: 400px;
+    color: white;
+    opacity: 0.3;
+    padding-top: 176px;
+    filter:alpha(opacity=40);
+}
+div.block{
+     margin-left: auto;
+     margin-right: auto;
+     height: 450px;
+     width: 100%;
+}
 div.comment-form{
     margin-left: 30px;
     margin-top: 30px;
@@ -178,4 +199,17 @@ div.fans-profile{
 }
 #submit{
     margin-top:10px;
+}
+#blog-post{
+    background-color: #df9573;
+}
+#blog-comment{
+    background-color:#123456;
+}
+#blog-follow{
+     background-color: #286;
+}
+#navbar{
+    margin-bottom: 0px;
+    width: 100%;
 }
