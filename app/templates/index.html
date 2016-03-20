@@ -7,24 +7,6 @@
 {{ pagedown.include_pagedown() }}
 {% endblock %}
 
-{% block body %}
-<div class="head-show" > 
-    <div class="color">
-        <p>flask-web开发之博客</p>
-    </div>
-</div>
-{{ super() }}
-{% endblock %}
-
-{% block content %}
-<div class="list-group">
-    <div id="blog-post" class="block"></div>
-    <div id="blog-comment" class="block"></div>
-    <div id="blog-follow" class="block"></div>
-    <div></div>
-</div>
-{% endblock %}
-
 {% block page_content %}
 <div class="page-header" >
     <h1>你好,

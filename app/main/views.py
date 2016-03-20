@@ -47,6 +47,13 @@ def index():
     # posts = Post.query.order_by(Post.timestamp.desc()).all()
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts, pagination=pagination, show_followed=show_followed)
+@main.route('/test')
+def test():
+    return render_template('index1.html')
+
+@main.route('/ppt')
+def ppt():
+    return render_template('ppt.html')
 
 @main.route('/post/<int:id>', methods=['GET','POST'])
 def post(id):

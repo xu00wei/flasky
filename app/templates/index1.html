@@ -1,0 +1,50 @@
+{% extends "bootstrap/base.html"%}
+
+{% block head %}
+{{ super() }}
+<link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="styles.css") }}">
+<script src='/static/jquery-2.2.2.min.js'></script>
+<script src="/static/index.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="index-bgcolor">
+    <div class="index-opacity ">
+        <div class="index-body">
+            <div class="index-font">
+                <h1>轻 翰</h1>
+                <hr class="long-line">
+                <p class="font">日微驻影，轻翰留书</p>
+                <hr class="short-line">
+            </div>
+            <div class="center center-mobile">
+                <ul class="nav navbar-nav ">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li ><a href="#">登入</a></li>
+                    <li ><a href="#">关于</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="contain nav-head" id="nav-head">
+            <div class="nav-header">
+                <button type="button" class="nav-mobile navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only" >Toggle navigation</span>
+                    <span class="icon-bar" ></span>
+                    <span class="icon-bar" ></span>
+                    <span class="icon-bar" ></span>
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse site">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">首页</a></li>
+                    <li ><a href="#">登入</a></li>
+                    <li ><a href="#">关于</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
