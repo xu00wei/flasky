@@ -1,12 +1,14 @@
-{% block body_attribs %} data-spy="scroll" data-target="#navbar-vertical" {% endblock body_attribs %}
+{% extends "bootstrap/base.html" %}
 
-{% block body %}
-<div class="head-show" > 
-    <div class="color">
-        <p>flask-web开发之博客</p>
-    </div>
-</div>
+{% block html_attribs %} class="html" {% endblock html_attribs %}
+
+{% block body_attribs %} class="body" data-spy="scroll" data-target="#navbar-vertical" {% endblock body_attribs %}
+
+{% block head %}
 {{ super() }}
+<link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="ppt.css") }}">
+<script src='/static/jquery-2.2.2.min.js'></script>
+<script src="/static/index.js"></script>
 {% endblock %}
 
 {% block content %}

@@ -1,4 +1,5 @@
 {% extends "bootstrap/base.html"%}
+{% import "_macros.html" as macros %}
 
 {% block head %}
 {{ super() }}
@@ -51,7 +52,33 @@
     </div>
 </div>
 <!-- 主页内容　-->
-<div class="index-content">
+<div class="index-content" id="index-content">
+    <div class="page-nav nav nav-pills">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">千絮</a></li>
+            <li role="presentation" ><a href="#">时光</a></li>
+            <li role="presentation"><a href="#">留香</a></li>
+        </ul>
+    </div>
+
+    <div class="page-content">
+
+        <div class="content-order-by">
+            <ul class="nav nav-pills order-nav">
+                <li role="presentation" class="first activeit"><a href="#">最新</a></li>
+                <li role="presentation"><a href="#">最热</a></li>
+              <li role="presentation"><a href="#">随便看</a></li>
+            </ul>
+        </div>
+        <div class="posts">
+            {% include "_posts.html"%}
+        </div>
+        <div class="pagination">
+            {{ macros.pagination_widget(pagination, '.index') }}
+        </div>
+    </div>
     
+    <div class="page-ext">
+    </div>
 </div>
 {% endblock %}

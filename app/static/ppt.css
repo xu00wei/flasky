@@ -1,0 +1,34 @@
+.html{
+    width: 100%;
+    height: 100%;
+}
+.body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#about{
+    background-color: #F9F9F5;
+}
+#frame{
+    background-color:#123456;
+}
+#skill{
+    background-color: #286;
+}
+div.nav-list{
+    position: fixed;
+    float: right;
+    width: 105px;
+    bottom: 5em;
+    right: 0px;
+}
+#navbar-ul{
+    border-bottom: 0px;
+}
+.list-group, .list-group div{
+    width: 100%;
+    height: 100%;
+}
+
+

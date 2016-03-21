@@ -47,9 +47,13 @@ def index():
     # posts = Post.query.order_by(Post.timestamp.desc()).all()
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts, pagination=pagination, show_followed=show_followed)
-@main.route('/test')
+
+@main.route('/test', methods=['GET', 'POST'])
 def test():
-    return render_template('index1.html')
+    page = request.args.get('page', 1, type=int)
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page)
+    posts = pagination.items
+    return render_template('index1.html', posts=posts, pagination=pagination)
 
 @main.route('/ppt')
 def ppt():

@@ -27,20 +27,7 @@ li.post div.head{
     height: 50px;
     width: 100%;
 }
-div.head-show{
-    font-size: 45px;
-    text-align: center;
-    height: 400px;
-    background: url(/static/head_show.jpg) no-repeat  center center;
-    background-size: cover;
-}
-div.nav-list{
-     position: fixed;
-     float: right;
-     width: 105px;
-     bottom: 5em;
-     right: 0px;
-}
+
 div.head-show div.color{
     background-color: black;
     height: 400px;
@@ -57,6 +44,8 @@ div.left-title{
     height: 100%;
     float: left;
     width: 25%;
+    position: fixed;
+    bottom: 0px;
 }
 div.mobile-left-title{
      height: initial;
@@ -125,6 +114,16 @@ div.post-content {
     margin-left: 48px;
     min-height: 48px;
 }
+div.content-order-by .order-nav a{
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin: 5px;
+    border: 1px solid;
+}
+div.content-order-by .activeit a{
+    background-color: #e78170;
+    color: white;
+}
 div.article-author{
     height: 180px;
     border-bottom: thin solid;
@@ -159,9 +158,9 @@ a.back-main{
     margin-right: 10px;
 }
 div.article-body{
-     margin-top:10px;
-     padding-left: 10px;
-     padding-bottom: 5px;
+    margin-top:10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
 }
 div.article-userinfo{
     float:left;
@@ -169,31 +168,49 @@ div.article-userinfo{
     width:80%;
 }
 div.no-post{
-     font-size: 50px;
-     width: 100%;
-     text-align: center;
-     margin-top: 100px;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
 }
 div.index-body{
-     max-width: 620px;
-     margin: 0 auto;
-     text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
 }
 div.index-content{
     display: none;
-     width: 50%;
-     height: 100%;
-     float: left;
+    width: 55%;
+    margin-left: 25%;
+    height: 100%;
+    float: left;
+}
+div.mobile-index-content{
+    margin: 0 1em 0 1em;
+    padding: 0;
+}
+div.index-content .page-content{
+    margin: 10px;
+    margin-left: 3em;
+    height: 80%;
+}
+.page-nav ul.nav-pills li.active a{
+    background-color: inherit;
+    color: #555555;
+    border-bottom: 2px solid;
+    border-radius: 0px;
+    margin-bottom: -2px;
+
 }
 div.index-body .center{
-     width: 283px;
-     font-size: 1.5em;
-     margin: 0 auto;
-     position: relative;
+    width: 283px;
+    font-size: 1.5em;
+    margin: 0 auto;
+    position: relative;
 }
 
 div.nav-header{
-     padding-top: 16px;
+    padding-top: 16px;
 }
 div.nav-head .site{
     text-align: center;
@@ -203,12 +220,12 @@ div.nav-head .site{
     background-color: rgba(51, 51, 51, 0.8);
 }
 div.nav-head .site ul{
-     width: 60%;
-     padding: 10px;
-     margin: 0 auto;
+    width: 60%;
+    padding: 10px;
+    margin: 0 auto;
 }
 div.nav-head .site li{
-     margin: 10px;
+    margin: 10px;
 }
 div.nav-head .site a{
     border-radius: 20px;
@@ -238,6 +255,13 @@ div.index-font .long-line{
     width: 50%;
     margin-top: 25px;
 }
+div.page-nav{
+    border-bottom:#fddddd 2px solid;
+    width: 100%;
+}
+div.page-nav ul{
+    margin-left: 2em;
+}
 div.center li{
     margin-left: 5px;
     margin-right: 5px;
@@ -266,8 +290,8 @@ div.index-bgcolor{
     background-color: #005F6F;
 }
 div.index-opacity{
-     display: table-cell;
-     vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 div.flask-pagedown-preview{
     float: left;
@@ -319,23 +343,11 @@ div.fans-profile{
 #submit{
     margin-top:10px;
 }
-#about{
-    background-color: #F9F9F5;
-}
-#frame{
-    background-color:#123456;
-}
-#skill{
-     background-color: #286;
-}
+
 #navbar{
     margin-bottom: 0px;
     width: 100%;
 }
-#navbar-ul{
-    border-bottom: 0px;
-}
-
 @media (max-width: 768px) {
     .center-mobile{
         display: none;}
