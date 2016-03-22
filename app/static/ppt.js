@@ -2,8 +2,26 @@
 $(document).ready(function(){
     var window_height = $(window).height();
 
+    $('#title .center .line').animate({width:"0px"}, '5000', function(){
+        $('#title .up').css({"position":"fixed", "top":"0"});
+        $('#title .down').css({"position":"fixed", "bottom":"0"});
+        $('#title .up, #title .down').css("height","50%");
+        $('#title .center').animate({width:"0px", height:"0px"}, '5000', function(){
+            $('#title .up, #title .down').animate({height:"0px"}, 'slow');
+        });
+        $("#title .title").css("display","inline");
+    });
+
+    $('.circle').mousemove(function(){
+        $(this).css("background","rgba(255,255,255,0.3)");
+    });
+
+    $('.circle').mouseleave(function(){
+        $(this).css("background","rgba(255,255,255,0.6)");
+    })
+
     $('.body').scroll(function(){
-        // alert(window_height + '...'+$('#about').offset().top+"..."+$("#frame").offset().top);
+        // alert(window_height + '...'+$('#title').offset().top+"..."+$("#frame").offset().top);
         var active_li = $('#navbar-vertical ul .active');
         var div_id = active_li.children().attr("href");
         var now_div = $(div_id);
@@ -23,6 +41,7 @@ $(document).ready(function(){
                 });
             });
         }
+        else return;
     });
 
 })

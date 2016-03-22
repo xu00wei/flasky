@@ -2,7 +2,7 @@
 
 {% block html_attribs %} class="html" {% endblock html_attribs %}
 
-{% block body_attribs %} class="body" data-spy="scroll" data-target="#navbar-vertical" {% endblock body_attribs %}
+{% block body_attribs %} class="body" {% endblock body_attribs %}
 
 {% block head %}
 {{ super() }}
@@ -13,14 +13,92 @@
 
 {% block content %}
 <div class="list-group">
-    <div id="about" class="block"></div>
-    <div id="frame" class="block"></div>
-    <div id="skill" class="block"></div>
+    <div id="title" class="block">
+        <div class="opacity">
+            <div class="up"></div>
+            <div class="center"><div class="line"></div></div>
+            <div class="down"></div>
+            <div class="title">
+                <h1>Flask</h1>
+                <p>基于python开发的web系统</p>
+            </div>
+        </div>
     </div>
+    <div id="about" class="block">
+        <div class="opacity">
+            <div class="site">
+                <div class="circle">
+                       <h1> 博客功能</h1>
+                       <p>注册，登入，登出，权限</p>
+                       <p>资料编辑，写博客</p>
+                       <p>分页，关注，评论及api应用接口</p>
+                       <b><a href="{{ url_for('.index') }}">去博客系统逛逛</a></b>
+                </div>
+            </div>
+            <div class="site">
+                <div class="more-info">
+                    <p>注册：注册用数据表，注册邮件认证,登入，登出</p>
+                    <p>权限：管理员(0xff)，协管员(0x0f)，用户(0x07), 游客(0x00)</p>
+                    <p>资料编辑:用户有自我编辑完善信息权利，管理员有改一切信息的权利</p>
+                    <p>博客：markdown博客编辑器</p>
+                    <p>关注：用户可以关注其它用户博客，可以有自己的粉丝</p>
+                    <p>评论：用户可以评论博客，管理员和协管员可以管理评论</p>
+                    <p>api应用接口：REST架构认证的用户可以从路由请求获取json数据</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="frame" class="block">
+        <div class="opacity">
+            <div class="site">
+                <div class="more-info">
+                <p>flask:<a　href="#">从flask出发</a>,<a href="#">flask的官方开发文档</a></p>
+                <p>MTV架构:<a href="#">MTV框架</a></p>
+                <p>bootstrap:．．．．．</p>
+                <p>SQLAlchemy:．．．．．．．</p>
+                <p>蓝本配置:．．．．．．</p>
+                <p>．．．．．．．．．．．．．</p>
+                <p></p>
+                </div>
+            </div>
+            <div class="site">
+                <div class="circle">
+                       <h1> 框架及扩展</h1>
+                       <p>flask,MTV架构,bootstrap</p>
+                       <p>WTForms, SQLAlchemy, 蓝本配置, Login</p>
+                       <p>Gravatar头像管理,markdown,pagedown,bleach</p>
+                       <p>REST架构，httpauth, httpip</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="skill" class="block">
+        <div class="opacity">
+            <div class="site">
+                <div class="circle">
+                       <h1>知识技能</h1>
+                </div>
+            </div>
+            <div class="site">
+                <div class="more-info">
+                    <p>编程环境：Linux，Vim</p>
+                    <p>编程架构：flask,MTV,REST</p>
+                    <p>前端知识：HTML，CSS，JS，JQ，Bootstrap</p>
+                    <p>数据库：Mysql，SQLAlchemy</p>
+                    <p>代理服务器：Nginx</p>
+                    <p>版本管理、文档：Git，Markdown</p>
+                    <p>Git帐号:<a href="https://github.com/xu00wei">  xu00wei</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="navbar-vertical" class="nav-list">
     <ul class="nav nav-tabs" id="navbar-ul" role="tablist">
-        <li class="active"><a href="#about">关于博客</a></li>
+        <li class="active"><a href="#title">正文标题</a></li>
+        <li><a href="#about">关于博客</a></li>
         <li><a href="#frame">框架介绍</a></li>
         <li><a href="#skill">知识技能</a></li>
 
