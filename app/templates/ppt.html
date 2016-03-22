@@ -8,7 +8,7 @@
 {{ super() }}
 <link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="ppt.css") }}">
 <script src='/static/jquery-2.2.2.min.js'></script>
-<script src="/static/index.js"></script>
+<script src="/static/ppt.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -16,15 +16,14 @@
     <div id="about" class="block"></div>
     <div id="frame" class="block"></div>
     <div id="skill" class="block"></div>
-    <div ></div>
-</div>
+    </div>
 
 <div id="navbar-vertical" class="nav-list">
     <ul class="nav nav-tabs" id="navbar-ul" role="tablist">
-        <li><a href="#about">关于博客</a></li>
+        <li class="active"><a href="#about">关于博客</a></li>
         <li><a href="#frame">框架介绍</a></li>
         <li><a href="#skill">知识技能</a></li>
 
-    <ul>
+    </ul>
 </div>
 {% endblock %}
