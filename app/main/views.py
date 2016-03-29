@@ -55,11 +55,14 @@ def test():
     posts = pagination.items
     return render_template('index1.html', posts=posts, pagination=pagination)
 
+
+
 @main.route('/ppt')
 def ppt():
     return render_template('ppt.html')
 
 @main.route('/post/<int:id>', methods=['GET','POST'])
+@login_required
 def post(id):
     post = Post.query.get_or_404(id)
     form = CommentForm()
