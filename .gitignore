@@ -1,0 +1,4 @@
+#忽略gitignore文件
+.gitignort
+#忽略后缀名为.default的文件
+config.py
