@@ -1,0 +1,75 @@
+.body{
+    height: 100%;
+}
+div.flask-pagedown-preview{
+    float: left;
+    overflow:scroll;
+    padding: 10px;
+    border: thin;
+    width: 55%;
+    color: aliceblue;
+    background:#48525e;
+}
+textarea.flask-pagedown-input{
+    float: left;
+    border: none;
+    width:100%;
+    overflow: scroll;
+}
+.flask-pagedown{
+    float: left;
+    width: 45%;
+}
+.form, .form-group, .flask-pagedown, #flask-pagedown-body-preview, #flask-pagedown-body{
+    height: 100%;
+}
+.form-group{
+     margin-bottom: 0px;
+}
+.head-input{
+    width: 100%;
+    height: 80px;
+    padding: 20px;
+    background: white;
+}
+.head-input input{
+    height: 40px;
+    border: none;
+}
+.post-tool{
+    height: 40px;
+    width: 100%;
+    float: left;
+    background: #ededed;
+}
+.post-tool ul{
+    float: left;
+}
+.post-tool .no-preview{
+    float: right;
+}
+.open-preview{
+     display: none;
+}
+.post-tool li{
+    float: left;
+    list-style-type: none;
+    margin: 0 10px;
+    height: 40px;
+}
+.post-tool li input{
+     border: none;
+     height: 40px;
+     background: #ededed;
+}
+.head-input button{
+     height: 40px;
+     width: 140px;
+     position: absolute;
+     right: 0px;
+     margin: 0 30px;
+     border: none;
+     background-color:rgba(168,26,3,0.8);
+     font-size: 2em;
+     color: white;
+}

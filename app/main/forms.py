@@ -29,11 +29,11 @@ class EditProfileAdminForm(Form):
 
     def validate_email(self, field):
         if field.data != self.user.email and User.query.filter_by(email=field.data).first():
-            raise ValidationError('该邮箱以经被注册过')
+            raise ValidationError('该邮箱已经被注册过')
 
     def validate_username(self, field):
         if field.data != self.user.username and User.query.filter_by(username=field.data).first():
-            raise ValidationError('该邮箱以经被注册过')
+            raise ValidationError('该邮箱已经被注册过')
 
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
@@ -42,8 +42,7 @@ class EditProfileAdminForm(Form):
         self.user = user
 
 class PostForm(Form):
-    body = PageDownField('你想写什么', validators=[Required()])
-    submit = SubmitField('提交')
+    body = PageDownField('', validators=[Required()])
 
 class EditPostForm(Form):
     body = PageDownField(validators=[Required()])

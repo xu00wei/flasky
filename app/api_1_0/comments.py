@@ -3,7 +3,7 @@ from ..models import Comment, Post
 from flask import jsonify, request, url_for, current_app
 
 @api.route('/comments/')
-def get_comments():
+def get_comments_json():
     page = request.args.get('page', 1, type=int)
     pagination = Comment.query.filter().paginate(page, current_app.config['FLASKY_COMMENTS_MANAGE_PER_PAGE'], error_out=False)
     comments = pagination.items
@@ -39,6 +39,6 @@ def get_post_comments(id):
 })
 
 @api.route('/comments/<int:id>')
-def get_comment(id):
+def get_comment_json(id):
     comment = Comment.query.get_or_404(id)
     return jsonify(comment.to_json())

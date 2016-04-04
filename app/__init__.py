@@ -17,6 +17,7 @@ pagedown = PageDown()
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
+login_manager.login_message = '您需要登入才能操作更多'
 login_manager.login_view = 'auth.login'
 
 

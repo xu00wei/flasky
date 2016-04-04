@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="writing.css") }}">
+<script src="/static/writing.js"></script>
+{% endblock %}
+
+{% block content_container_attr %}
+class="post-container"
+{% endblock %}
+
+{% block page_content %}
+<div class="body">
+    <div class="head-input">
+        <input type="text" placeholder="文章标题" />
+        <button type="button">发表文章</button>
+    </div>
+    <div class="post-tool">
+        <ul>
+            <li><input type="button" class="bold" value="加粗"></li>
+            <li><input type="button" class="italic" value="斜体"></li>
+            <li><input type="button" class="copy" value="复制"></li>
+            <li><input type="button" class="make-links" value="创建链接"></li>
+        </ul>
+        <ul class="no-preview">
+            <li><input type="button" class="close-preview" value="关闭视图"></li>
+            <li><input type="button" class="open-preview" value="打开视图"></li>
+        </ul>
+    </div>
+
+    <div class="post-text">
+        {{ wtf.quick_form(form) }}
+    </div>
+</div>
+
+{% endblock %}
+

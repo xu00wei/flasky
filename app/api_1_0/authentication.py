@@ -1,5 +1,4 @@
-# -*- encoding=utf-8 -*-
-
+#-*- encoding:utf-8 -*-
 from flask.ext.httpauth import HTTPBasicAuth
 from ..models import User, AnonymousUser
 from .errors import forbidden,unauthorized
@@ -21,14 +20,13 @@ def verify_password(email_or_token, password):
     user = User.query.filter_by(email = email_or_token).first()
     if not user:
         return False
-    print 'api_1_0/authentication :', user.username, password
     g.current_user = user
     g.token_used = False
     return user.verify_password(password)
 
 @api.route('/token')
 def get_token():
-    if g.current_user.is_anonymous or g.token_used:
+    if g.current_user.is_anonymous() or g.token_used:
         return unauthorized('无效的密令')
     return jsonify({'token':g.current_user.generate_auth_token(expiration=3600), 'expiration': 3600})
 
@@ -45,3 +43,15 @@ def before_request():
 
 
 
+
+
+
+@api.route('/comments/')
+def get_comments():
+    comments = Comment.query.filter().all()
+    return jsonify([comment.to_json() for comment in comments])
+
+@api.route('/comments/<int:id>')
+def get_comment(id):
+    user = User.query.filter_by(id=id).first()
+    user.comments.order_by

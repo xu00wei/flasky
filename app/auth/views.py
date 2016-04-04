@@ -16,9 +16,10 @@ def login():
         user = User.query.filter_by(email=form.email.data).first() # 查询数据库中的帐号
         if user is not None and user.verify_password(form.password.data): # 验证密码
             login_user(user, form.remember_me.data) # 存储是否自动登入信息
-            return redirect(request.args.get('next') or url_for('main.index')) # 跳转原请求网页或首页
+            return redirect(url_for('main.index')) # 跳转原请求网页或首页
         flash('无效的用户名或密码') # 用户名不存在或密码错误
     return render_template('auth/login.html', form=form) # 重新输入登入信息
+
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():

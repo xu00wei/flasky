@@ -12,29 +12,44 @@
 
 
 {% block navbar %}
-<div class="navbar navbar-inverse" role="navigation" id="navbar">
+<div class="navbar" role="navigation" id="navbar">
     <div class="container" >
-        <div class="navbar-header" >
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only" >Toggle navigation</span>
-                <span class="icon-bar" ></span>
-                <span class="icon-bar" ></span>
-                <span class="icon-bar" ></span>
-            </button>
-        </div>
         <div class="navbar-collapse collapse" >
-            <ul class="nav navbar-nav" >
-                <li><a href="/" >主页</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right"> 
+            <ul class="nav navbar-nav">
+                <li >
+                    <a  href="/" >
+                        <em class="glyphicon glyphicon-home"></em>
+                        <em>主页</em>
+                    </a>
+                </li>
+                
+                {% if current_user.can(Permission.WRITE_ARTICLES) %}
+                <li >
+                <a  href="/writing" >
+                    <em class="glyphicon glyphicon-pencil"></em>
+                        <em>写文章</em>
+                    </a>
+                </li>
+                {% endif  %}
+
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('main.user', username=current_user.username) }}">关于我</a></li>
+                <li><a href="{{ url_for('main.user', username=current_user.username) }}">
+                    <em class="glyphicon glyphicon-user"></em>
+                    <em>关于我</em>
+                </a></li>
                     {% if current_user.can(Permission.MODERATE_COMMENTS) %}
-                    <li><a href="{{ url_for('main.comment_manage') }}">管理评论</a＞ </li>
+                    <li><a href="{{ url_for('main.comment_manage') }}">
+                        <em class="glyphicon glyphicon-leaf"></em>
+                        <em>管理评论</em></a＞ </li>
                     {% endif %}
-                <li><a href="{{ url_for('auth.logout') }}">登出</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">
+                    <em class="glyphicon glyphicon-log-out"></em>
+                    <em>登出</em></a></li>
                 {% else %}
-                <li><a href="{{ url_for('auth.login') }}">登入</a></li>
+                <li><a href="{{ url_for('auth.login') }}">
+                    <em></em>
+                    <em>登入</em>
+                </a></li>
                 {% endif %}
             </ul>
         </div>
@@ -43,7 +58,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div {% block content_container_attr%}{% endblock %}>
     {% for message in get_flashed_messages() %}
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>

@@ -4,12 +4,12 @@
         <li class="post comment">
         <div class="comment-info">
             {% if comment.disabled and not censor %}
-            <p>抱歉！该评论被协管员禁了</p>
+            <p class="danger">抱歉！该评论被禁了</p>
             {% else %}
             <p>{{ comment.body }}</p>
             {% endif %}
         </div>
-        <p><a href="{{url_for('main.user', username=comment.author.username)}}">{{ comment.author.username }}</a> 评论于: {{ moment().format('LLL')}}</p>
+        <p><a href="{{url_for('main.user', username=comment.author.username)}}">{{ comment.author.username }}</a> 评论于: {{ comment.timestamp}}</p>
         {% if censor %}
             <br>
             <div class="able-or-not">

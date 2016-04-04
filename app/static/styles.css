@@ -9,6 +9,27 @@ html,body{
 hr{
    border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
+.container{
+    width: 100%;
+    padding: 0;
+}
+.container_60{
+    width: 60%;
+    margin: 0 auto;
+}
+.alert-warning{
+    position: fixed;
+    width: 100%;
+}
+.body_bg .container_60{
+    width:1000px;
+}
+.container.body_bg{
+    background: url('body_bg.jpg') no-repeat;
+    background-position: center 0;
+    padding-top: 284px;
+    background-color: #5eb5ea;
+}
 .profile-thumbnail {
     position: absolute;
 }
@@ -47,6 +68,28 @@ div.left-title{
     position: fixed;
     bottom: 0px;
 }
+.login-header, .login-info{
+    padding: 10px 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.login-header h1{
+    margin-top: 10px;
+}
+.login-info{
+    padding-top: 15px;
+    width: 100%;
+}
+.login-header{
+    text-align: center;
+}
+.login .col-md-7.center{
+     width: 280px;
+}
+.login #submit{
+    margin: 0 0 10px 10px;
+    background-color: darkgray;
+    width: 240px;
+}
 div.mobile-left-title{
      height: initial;
      float: none;
@@ -67,6 +110,10 @@ li.post div.time{
 }
 div.comments li.post{
     margin-left: 30px;
+}
+div.comment-info .danger{
+    color: red;
+    font-style: oblique;
 }
 li.post div.authorname{
     float: left;
@@ -125,8 +172,45 @@ div.content-order-by .activeit a{
     color: white;
 }
 div.article-author{
-    height: 180px;
+    background-color: rgba(0,0,0,0.7);
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    padding-top: 50px;
     border-bottom: thin solid;
+}
+div.article-author .profile{
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
+}
+div.article-author .author_ext_link{
+    margin: 0 auto;
+    width: 150px;
+    margin-top: 10px;
+}
+div.article-author .author_ext_link a{
+    float: left;
+    margin: 0 auto;
+    width: 50px;
+    line-height: 1.3em;
+    padding: 0px;
+}
+div.author_ext_link p{
+    margin: 0;
+}
+div.article-author .author_ext_link .border{
+     border-left: solid 1px;
+     border-right: solid 1px;
+}
+.article-head{
+     width: 150px;
+     height: 150px;
+     margin: 0 auto;
+     margin-bottom: 10px;
+}
+.article-head img{
+    border-radius: 50%;
 }
 div.article-btn-edit{
     text-align: right;
@@ -137,14 +221,14 @@ a.btn-editpost{
 a.article-username{
      font-size: 30px;
 }
-div.article-head{
-    float:left;
-    width:20%;
-}
 div.followed-by{
     text-align: center;
     height: 350px;
     background-color:lightblue;
+}
+div.followed-by-border{
+    width: 100%;
+    border: solid 10px rgba(255,255,255,0.3);
 }
 div.user-img{
     height: 150px;
@@ -157,15 +241,14 @@ div.followed-info{
 a.back-main{
     margin-right: 10px;
 }
+div.article-content{
+    margin-left: 30%;
+    width: 60%;
+}
 div.article-body{
     margin-top:10px;
     padding-left: 10px;
     padding-bottom: 5px;
-}
-div.article-userinfo{
-    float:left;
-    height:150px;
-    width:80%;
 }
 div.no-post{
     font-size: 50px;
@@ -185,6 +268,9 @@ div.index-content{
     height: 100%;
     float: left;
 }
+div.show{
+     display: block;
+}
 div.mobile-index-content{
     margin: 0 1em 0 1em;
     padding: 0;
@@ -203,12 +289,15 @@ div.index-content .page-content{
 
 }
 div.index-body .center{
-    width: 283px;
+    width: 252px;
     font-size: 1.5em;
     margin: 0 auto;
     position: relative;
 }
-
+div.login-info .center{
+     margin: 0 auto;
+     float: none;
+}
 div.nav-header{
     padding-top: 16px;
 }
@@ -231,9 +320,6 @@ div.nav-head .site a{
     border-radius: 20px;
     border: 1px solid;
 
-}
-div.index-opacity{
-    color: white;
 }
 div.index-opacity .nav-head{
     display: none;
@@ -269,6 +355,7 @@ div.center li{
 div.center a{
     border: 1px solid;
     border-radius: 20px;
+    color: indianred;
     line-height: 0px;
 }
 div.able-or-not{
@@ -278,67 +365,102 @@ textarea.form-control{
     height: 400px;
     width: 550px;
 }
-textarea.flask-pagedown-input{
-    float: left;
-    background-color:rgba(45, 45, 45, 0.95);
-    color:azure;
-}
 div.index-bgcolor{
     width: 100%;
     height: 100%;
     display: table;
-    background-color: #005F6F;
+    /*background-color: #005F6F;*/
+    background: url('275877.jpg') no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+div.login{
+    width: 100%;
+    display: table;
+    background: url('body_bg 2.jpg') no-repeat center;
+    background-position-y: -50px;
+}
+div.login .login-site{
+    width: 400px;
+    margin: 0 auto;
+}
+div.login .form{
+    width: 250px;
+}
+div.login .form label{
+    float: left;
+    margin: 6px 10px;
+}
+div.login .form .checkbox label{
+     float: none;
+}
+div.login-header p{
+    margin: 0px;
+}
+div.login .form .form-group{
+    margin: 0 0 10px 0;
+}
+div.login .form .form-control{
+    width: auto;
 }
 div.index-opacity{
     display: table-cell;
+    color: white;
     vertical-align: middle;
-}
-div.flask-pagedown-preview{
-    float: left;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 4px;
-    border-color: gray;
-    overflow:scroll;
-    padding: 10px;
-    margin-left: 10px;
-    height: 400px;
-    width: 550px;
+    background: rgba(0,0,0,0.3);
 }
 div.fans{
     width: 100%;
+    background: rgba(255,255,255,0.3);
     float: left;
+    padding: 5px;
 }
 div.fans-icon{
-    padding-left: 20%;
+    float: left;
+    height: 120px;
+    width: 90px;
+    /*background:#48525e;*/
+    border-right: solid 1px;
+    padding-top: 26px;
+    padding-right: 20px;
 }
 li.fans{
     list-style-type: none;
-    width: 25%;
-    height: 300px;
-    padding: 25px;
-    border: 4px solid #FFFFFF;
-    border-left: none;
-    border-bottom: none;
+    margin: 5px;
+    height: 150px;
+    float: left;
+}
+li.fans .fans-border{
+    height: 150px;
+    padding: 15px;
     background: #E3E8E6;
     float: left;
 }
 div.fans-profile{
     margin: 5px;
-    width: 80%;
+    width: 190px;
+    float: left;
+}
+div.fans-profile #follower-profile div{
+    width: 190px;
+    height: 2em;
+    line-height: 2em;
+    overflow: hidden;
 }
 #follower-name{
     font-size: 25px;
-    width: 55%;
     float: left;
+    margin-left: 10px;
     text-align: center;
 }
-#follower-profile{
-    float: left;
+li.fans #is-follow-or-not{
+     float: left;
 }
-#navbar{
-    background-color: rgb(51,55,60);
-    border-radius: 0px;
+#follower-profile{
+    clear: left;
+    margin-left: 10px;
 }
 #submit{
     margin-top:10px;
@@ -347,6 +469,15 @@ div.fans-profile{
 #navbar{
     margin-bottom: 0px;
     width: 100%;
+}
+.navbar-nav{
+    float: right;
+}
+#navbar .container .collapse{
+    background: rgba(240,240,240,0.8);;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 @media (max-width: 768px) {
     .center-mobile{

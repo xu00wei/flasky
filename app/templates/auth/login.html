@@ -2,17 +2,24 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% block title %}Flasky - Register {% endblock %}
 
+{% block content_container_attr %}
+class="login"
+{% endblock %}
+
 {% block page_content %}
-<div class="page-header">
-    <h1>登入</h1>
-<p>
-    新用户？
-    <a href="{{ url_for('auth.register') }}">
-        点击这里进行注册
-    </a>
-</p>
-</div>
-<div class="col-md-4">
-    {{ wtf.quick_form(form) }}
+<div class="index-opacity">
+    <div class="login-site">
+        <div class="login-header">
+            <h1>登入</h1>
+            <p>新用户？<a href="{{ url_for('auth.register') }}">
+                    点击这里进行注册
+            </a></p>
+        </div>
+        <div class="login-info ">
+            <div class="col-md-7 center">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

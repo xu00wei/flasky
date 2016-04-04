@@ -14,8 +14,15 @@
 $(document).ready(function(){
     var need_remove_circle = true;
     var window_width = $(window).width();
-    var order_nav_activer = $(".order-nav .first");
+    var window_height = $(window).height();
+    var posts_order_nav_activer = $(".order-nav .first");
+    var page_nav_activer = $(".page-nav ul").children('li.active');
+    var login_height = window_height - 50;
 
+    function loginHeight(){
+        $('.login').css("height",login_height+"px");
+    };
+    loginHeight();
     function navIconChange(){
         if(need_remove_circle){
             $(".nav-mobile").removeClass("glyphicon-menu-hamburger");
@@ -34,6 +41,10 @@ $(document).ready(function(){
      */
     $(window).resize(function(){
         now_window_width = $(window).width();
+        login_height = $(window).height() - 50;
+
+        $('.login').css("height",login_height+"px");
+
         if(now_window_width <= 768 && window_width > 768 && $('#title').attr("class") != "full-title"){
             $("#title").addClass("mobile-left-title").removeClass("left-title");
             $("#index-content").addClass("mobile-index-content").removeClass("index-content");
@@ -75,12 +86,22 @@ $(document).ready(function(){
     });
 
 
-
+    /**
+     *  最新，最热，随便看的文章序列导航条点击事件
+     */
     $(".order-nav li").click(function(){
-        if( $(this) == order_nav_activer )  return;
-        $(this).addClass("activeit");
-        order_nav_activer.removeClass("activeit");
-        order_nav_activer = $(this);
+        posts_order_nav_activer.removeClass("activeit");
+        posts_order_nav_activer = $(this);
+        posts_order_nav_activer.addClass("activeit");
+    });
+
+    /**
+     *  千絮，时光，留香的页面导航条点击事件
+     */
+    $(".page-nav li").click(function(){
+        page_nav_activer.removeClass("active");
+        page_nav_activer = $(this);
+        page_nav_activer.addClass("active");
     })
 })
 

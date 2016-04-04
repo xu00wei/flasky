@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-from flask import render_template, redirect, url_for, abort, flash, request, make_response
+from flask import render_template, redirect, url_for, abort, flash, request, make_response, session
 # from datetime import datetime
 from . import main
 from .forms import PostForm, EditProfileForm, EditProfileAdminForm, EditPostForm, CommentForm
@@ -43,46 +43,57 @@ def index():
     else:
         query = Post.query
     page = request.args.get('page', 1, type=int)
-    pagination = query.order_by(Post.timestamp.desc()).paginate(page)
+    pagination = query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
     # posts = Post.query.order_by(Post.timestamp.desc()).all()
     posts = pagination.items
-    return render_template('index.html', form=form, posts=posts, pagination=pagination, show_followed=show_followed)
+    return render_template('index1.html', form=form, posts=posts, pagination=pagination, show_followed=show_followed)
 
 @main.route('/test', methods=['GET', 'POST'])
 def test():
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page)
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
     posts = pagination.items
-    return render_template('index1.html', posts=posts, pagination=pagination)
+    return render_template('index2.html', posts=posts, pagination=pagination)
 
+@main.route('/test2', methods=['GET', 'POST'])
+def test2():
+    page = request.args.get('page', 1, type=int)
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
+    posts = pagination.items
+    return render_template('index2.html', posts=posts, pagination=pagination)
 
+@main.route('/writing', methods=['GET', 'POST'])
+def writing():
+    form = PostForm()
+    return render_template('writing.html', form=form)
 
 @main.route('/ppt')
 def ppt():
     return render_template('ppt.html')
 
 @main.route('/post/<int:id>', methods=['GET','POST'])
-@login_required
 def post(id):
     post = Post.query.get_or_404(id)
     form = CommentForm()
+    page = request.args.get('page',1, type=int)
     per_page = current_app.config['FLASKY_COMMENTS_PER_PAGE']
     if form.validate_on_submit():
+        if current_user.is_anonymous:
+            flash('你需要登入才能评论')
+            return redirect(url_for('auth.login'))
         comment = Comment(body=form.body.data,
                           post=post,
                           author=current_user._get_current_object()
                           )
         db.session.add(comment)
-        page = (post.comments.count()-1) / per_page + 1
         flash('评论提交成功')
         return redirect(url_for('.post', id = post.id, page=page))
-    page = request.args.get('page',1, type=int)
     censor = current_user.can(Permission.MODERATE_COMMENTS)
-    pagination = post.comments.order_by(Comment.timestamp.asc()).paginate(
+    pagination = post.comments.order_by(Comment.timestamp.desc()).paginate(
          page, per_page=per_page, error_out=False
     )
     comments = pagination.items
-    return render_template('post.html', post=post, form=form, comments=comments, pagination=pagination, censor=censor)
+    return render_template('post.html', post=post, user=post.author, form=form, comments=comments, pagination=pagination, censor=censor)
 
 @main.route('/edit-post/<id>', methods=['GET', 'POST'])
 def edit_post(id):
@@ -106,7 +117,6 @@ def comment_manage():
     comments = pagination.items
     return render_template('comment_manage.html', comments = comments, pagination = pagination, page = page)
 
-
 @main.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first()
@@ -114,7 +124,15 @@ def user(username):
         abort(404)
     posts = user.posts.order_by(Post.timestamp.desc()).all()
     print len(posts)
+    if session.get('posts_request') is True:
+        session['posts_request'] = False
+        return render_template('user_posts.html', user=user, posts=posts)
     return render_template('user.html',user=user, posts=posts)
+
+@main.route('/user/<username>/posts')
+def user_posts(username):
+    session['posts_request'] = True
+    return redirect(url_for('.user', username=username))
 
 @main.route('/edit-profile', methods=['GET','POST'])
 @login_required
@@ -172,6 +190,7 @@ def for_moderators_only():
 
 
 @main.route('/follow/<username>', methods=['GET', 'POST'])
+@login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
     current_user.follow(user)
@@ -222,5 +241,4 @@ def able_or_not(id):
     comment = Comment.query.get_or_404(id)
     comment.disabled = not comment.disabled
     db.session.add(comment)
-    return redirect(url_for('.comment_manage', page=request.args.get('page', 1, type=int)))
-
+    return redirect(request.referrer)

@@ -10,7 +10,7 @@
 
 {% block content %}
 <!-- 中间页　-->
-<div class="full-title" id="title">
+<div class="left-title" id="title">
     <div class="index-bgcolor">
         <div class="index-opacity ">
             <div class="index-body">
@@ -52,7 +52,7 @@
     </div>
 </div>
 <!-- 主页内容　-->
-<div class="index-content" id="index-content">
+<div class="index-content show" id="index-content">
     <div class="page-nav nav nav-pills">
         <ul class="nav nav-pills">
             <li role="presentation" class="active"><a href="#">千絮</a></li>
@@ -74,7 +74,7 @@
             {% include "_posts.html"%}
         </div>
         <div class="pagination">
-            {{ macros.pagination_widget(pagination, '.test') }}
+            {{ macros.pagination_widget(pagination, '.test2') }}
         </div>
     </div>
     
@@ -82,10 +82,3 @@
     </div>
 </div>
 {% endblock %}
-
-{% block scripts %}
-    {{ super() }}
-    {{ moment.include_moment() }}
-    {{ moment.lang("zh-cn") }}
-{% endblock %}
-

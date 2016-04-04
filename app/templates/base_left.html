@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Flask{% endblock %}
+{% import '_macros.html' as macros%}
+
+
+{% block head %}
+{{ super() }}
+<link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="styles.css") }}">
+<script src='/static/jquery-2.2.2.min.js'></script>
+<script src="/static/index.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="article-author">
+        <div class="profile">
+            <div class="article-head" > <img src="{{ user.gravatar(150) }}"> </div>
+            <div class="article-userinfo">
+                <p><a class="article-username" href="{{ url_for('main.user', username=user.username) }}"> {{ user.username }}</a></p>
+                <p> email:&nbsp;{{ user.email }} </p>
+                <!--{% if not current_user.username == user.username %}-->
+                <!--{{ macros.follow_or_not(user, current_user) }}-->
+                <!--{% endif %}-->
+            </div>
+            <div class="author_ext_link">
+                <a href=" {{ url_for('.user_posts', username=user.username) }}"  class="">
+                    <p>{{ user.posts.count() }}</p>
+                    <p>文章</p>
+                </a>
+                <a href="{{url_for('.followeds', username=user.username) }}" class="border">
+                    <p>{{ user.followed.count() }}</p>
+                    <p>关注</p>
+                </a>
+                <a href="{{ url_for('.followers', username=user.username) }}" class="">
+                    <p>{{ user.followers.count() }}</p>
+                    <p>粉丝</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="article-content">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
+    {% block page_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.lang("zh-cn") }}
+{% endblock %}
+
