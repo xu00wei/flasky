@@ -42,6 +42,8 @@ class EditProfileAdminForm(Form):
         self.user = user
 
 class PostForm(Form):
+    title = StringField('', validators=[Required()])
+    submit = SubmitField('发表文章')
     body = PageDownField('', validators=[Required()])
 
 class EditPostForm(Form):

@@ -18,10 +18,14 @@ class="post-container"
 
 {% block page_content %}
 <div class="body">
+    <form method="POST">
     <div class="head-input">
-        <input type="text" placeholder="文章标题" />
-        <button type="button">发表文章</button>
+        <!--<input type="text" placeholder="文章标题" />-->
+        {{ form.csrf_token }}
+        {{ form.title(placeholder="文章标题") }}
+        {{ form.submit(id="post_submit") }}
     </div>
+    
     <div class="post-tool">
         <ul>
             <li><input type="button" class="bold" value="加粗"></li>
@@ -36,8 +40,9 @@ class="post-container"
     </div>
 
     <div class="post-text">
-        {{ wtf.quick_form(form) }}
+        {{ form.body() }}
     </div>
+    </form>
 </div>
 
 {% endblock %}

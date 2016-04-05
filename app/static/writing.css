@@ -20,8 +20,11 @@ textarea.flask-pagedown-input{
     float: left;
     width: 45%;
 }
-.form, .form-group, .flask-pagedown, #flask-pagedown-body-preview, #flask-pagedown-body{
+form, .flask-pagedown, #flask-pagedown-body-preview, .post-container, #flask-pagedown-body{
     height: 100%;
+}
+.post-container{
+    margin-top: -40px;
 }
 .form-group{
      margin-bottom: 0px;
@@ -32,9 +35,12 @@ textarea.flask-pagedown-input{
     padding: 20px;
     background: white;
 }
-.head-input input{
+form{
+     padding-top: 40px;
+}
+form #title{
     height: 40px;
-    border: none;
+    width: 70%;
 }
 .post-tool{
     height: 40px;
@@ -62,12 +68,10 @@ textarea.flask-pagedown-input{
      height: 40px;
      background: #ededed;
 }
-.head-input button{
-     height: 40px;
+#post_submit{
      width: 140px;
-     position: absolute;
-     right: 0px;
      margin: 0 30px;
+     float: right;
      border: none;
      background-color:rgba(168,26,3,0.8);
      font-size: 2em;
