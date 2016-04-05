@@ -2,3 +2,5 @@
 .gitignort
 #忽略后缀名为.default的文件
 config.py
+#忽略migrate
+migrations

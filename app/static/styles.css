@@ -7,7 +7,7 @@ html,body{
     width: 100%;
 }
 hr{
-   border-top: 1px solid rgba(255, 255, 255, 0.14);
+   border-top: 1px solid rgba(87,41,15,0.3);
 }
 .container{
     width: 100%;
@@ -48,6 +48,13 @@ li.post div.head{
     height: 50px;
     width: 100%;
 }
+.unconfired .page-header{
+    margin-top: 0px;
+    padding: 70px;
+}
+.unconfired .page-header h1{
+    margin: 0px;
+}
 
 div.head-show div.color{
     background-color: black;
@@ -68,9 +75,10 @@ div.left-title{
     position: fixed;
     bottom: 0px;
 }
+
 .login-header, .login-info{
     padding: 10px 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(255,255,255,0.3);
 }
 .login-header h1{
     margin-top: 10px;
@@ -79,6 +87,7 @@ div.left-title{
     padding-top: 15px;
     width: 100%;
 }
+
 .login-header{
     text-align: center;
 }
@@ -87,8 +96,13 @@ div.left-title{
 }
 .login #submit{
     margin: 0 0 10px 10px;
-    background-color: darkgray;
     width: 240px;
+}
+.register .col-md-4{
+    float: none;
+    width: 300px;
+    padding-bottom: 10px;
+    margin: 0 auto;
 }
 div.mobile-left-title{
      height: initial;
@@ -168,7 +182,7 @@ div.content-order-by .order-nav a{
     border: 1px solid;
 }
 div.content-order-by .activeit a{
-    background-color: #e78170;
+    background-color: rgba(57,41,15,0.8);
     color: white;
 }
 div.article-author{
@@ -241,9 +255,27 @@ div.followed-info{
 a.back-main{
     margin-right: 10px;
 }
+.dropdown{
+    position: fixed;
+    right: 20px;
+    background: #F6F6F6;
+    top: 20px;
+}
+.dropdown .btn{
+    padding: 0px;
+    background: #F6F6F6;
+    border: none;
+}
+.dropdown .btn-default{
+    font-size: 1.8em;
+}
+.dropdown .dropdown-menu{
+    left: auto;
+    right: 0px;
+}
 div.article-content{
     margin-left: 30%;
-    width: 60%;
+    width: 50%;
 }
 div.article-body{
     margin-top:10px;
@@ -335,6 +367,8 @@ div.index-font{
 }
 div.index-font .short-line{
     width: 15%;
+    border-color: rgba(0,0,0,0);
+    margin-top: 35px;
     margin-bottom: 30px;
 }
 div.index-font .long-line{
@@ -355,7 +389,7 @@ div.center li{
 div.center a{
     border: 1px solid;
     border-radius: 20px;
-    color: indianred;
+    color: rgba(87,41,15,0.8);
     line-height: 0px;
 }
 div.able-or-not{
@@ -365,22 +399,27 @@ textarea.form-control{
     height: 400px;
     width: 550px;
 }
-div.index-bgcolor{
+.index-bgcolor{
     width: 100%;
     height: 100%;
     display: table;
     /*background-color: #005F6F;*/
-    background: url('275877.jpg') no-repeat;
-    background-position: center center;
+    background: url('index_bg.png') no-repeat;
     background-attachment: fixed;
     background-size: cover;
 
 }
+.index2 .index-bgcolor{
+    background-position-x: -500px;
+}
+
 div.login{
     width: 100%;
+    height: 100%;
+    margin-top: -50px;
     display: table;
     background: url('body_bg 2.jpg') no-repeat center;
-    background-position-y: -50px;
+    background-position-y: 3px;
 }
 div.login .login-site{
     width: 400px;
@@ -389,9 +428,12 @@ div.login .login-site{
 div.login .form{
     width: 250px;
 }
+div.register .form{
+    width: 263px;
+    text-align: center;
+}
 div.login .form label{
-    float: left;
-    margin: 6px 10px;
+    margin: 6px 10px 6px 0px;
 }
 div.login .form .checkbox label{
      float: none;
@@ -400,17 +442,19 @@ div.login-header p{
     margin: 0px;
 }
 div.login .form .form-group{
-    margin: 0 0 10px 0;
+    text-align: right;
+    margin: 0 0 20px 0;
 }
 div.login .form .form-control{
     width: auto;
+    float: right;
 }
 div.index-opacity{
     display: table-cell;
-    color: white;
+    color: rgba(87,41,15,0.8);
     vertical-align: middle;
-    background: rgba(0,0,0,0.3);
 }
+
 div.fans{
     width: 100%;
     background: rgba(255,255,255,0.3);
@@ -465,10 +509,20 @@ li.fans #is-follow-or-not{
 #submit{
     margin-top:10px;
 }
+.register_bgcolor{
+    background-color: #DBDBDB;
+}
+.register #submit{
+    width: 100%;
+}
 
 #navbar{
     margin-bottom: 0px;
+    min-height: 40px;
     width: 100%;
+}
+#navbar .navbar-nav a{
+     padding: 10px 15px;
 }
 .navbar-nav{
     float: right;
@@ -479,6 +533,7 @@ li.fans #is-follow-or-not{
     position: fixed;
     top: 0;
 }
+
 @media (max-width: 768px) {
     .center-mobile{
         display: none;}

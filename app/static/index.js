@@ -17,12 +17,7 @@ $(document).ready(function(){
     var window_height = $(window).height();
     var posts_order_nav_activer = $(".order-nav .first");
     var page_nav_activer = $(".page-nav ul").children('li.active');
-    var login_height = window_height - 50;
 
-    function loginHeight(){
-        $('.login').css("height",login_height+"px");
-    };
-    loginHeight();
     function navIconChange(){
         if(need_remove_circle){
             $(".nav-mobile").removeClass("glyphicon-menu-hamburger");
@@ -71,6 +66,7 @@ $(document).ready(function(){
             $("#title").animate({ width:'25%'},'normal',function(){
                 $("#title").addClass("left-title").removeClass("full-title").removeAttr("style");
                 $('#index-content').css("display","block");
+                $('.index-bgcolor').css("background-position","-500px 0px");
             });
         }
         else{

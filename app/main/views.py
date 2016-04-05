@@ -35,13 +35,14 @@ def index():
                     author=current_user._get_current_object())
         db.session.add(post)
         return redirect(url_for('.index'))
-    show_followed = False
-    if current_user.is_authenticated:
-        show_followed = bool(request.cookies.get('show_followed', ''))
-    if show_followed:
-        query = current_user.followed_posts
-    else:
-        query = Post.query
+    # show_followed = False
+    # if current_user.is_authenticated:
+        # show_followed = bool(request.cookies.get('show_followed', ''))
+    # if show_followed:
+        # query = current_user.followed_posts
+    # else:
+    #     query = Post.query
+    query = Post.query
     page = request.args.get('page', 1, type=int)
     pagination = query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
     # posts = Post.query.order_by(Post.timestamp.desc()).all()

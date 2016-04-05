@@ -15,7 +15,7 @@ class RegistrationForm(Form):
     email = StringField('邮箱', validators=[Required(), Length(1, 64), Email()])
     username = StringField('用户名', validators=[Required(), Length(1,64)])
     password = PasswordField('密码', validators=[Required(), EqualTo('password2', message='两次密码必须一致！')])
-    password2 = PasswordField('再次输入密码', validators=[Required()])
+    password2 = PasswordField('确认密码', validators=[Required()])
     submit = SubmitField('注册')
 
     def validate_email(self, field):
@@ -29,7 +29,7 @@ class RegistrationForm(Form):
 class ChangePasswordForm(Form):
     old_password = PasswordField('旧密码', validators=[Required()])
     password = PasswordField('新密码', validators=[Required(), EqualTo('password2', message='新密码的两次输入必须一致！')])
-    password2 = PasswordField('再次输入密码', validators=[Required()])
+    password2 = PasswordField('确认密码', validators=[Required()])
     submit = SubmitField('修改')
 
 class ResetPasswordRequiredForm(Form):
@@ -39,5 +39,5 @@ class ResetPasswordRequiredForm(Form):
 class ResetPasswordForm(Form):
     email = StringField('邮箱', validators=[Required(), Email()])
     password = PasswordField('新密码', validators=[Required(),EqualTo('password2', message='新密码的两次输入必须一致！')])
-    password2 = PasswordField('再次输入密码', validators=[Required()])
+    password2 = PasswordField('确认密码', validators=[Required()])
     submit = SubmitField('重置')

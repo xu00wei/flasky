@@ -2,17 +2,25 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% block title %}Flasky - Register {% endblock %}
 
-{% block content_container %}
-    class="container_60"
+{% block content_container_attr %}
+class="login register"
+{% endblock %}
+
+{% block body_attribs %}
+    class="register_bgcolor"
 {% endblock %}
 
 {% block page_content %}
-<div class="login-header">
-    <h1>注册</h1>
-</div>
-<div class="login-info">
-    <div class="col-md-4">
-        {{ wtf.quick_form(form) }}
+<div class="index-opacity">
+    <div class="login-site">
+        <div class="login-header">
+            <h1>注册</h1>
+        </div>
+        <div class="login-info">
+            <div class="col-md-4">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
