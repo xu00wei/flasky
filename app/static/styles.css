@@ -18,7 +18,8 @@ hr{
     margin: 0 auto;
 }
 .alert-warning{
-    position: fixed;
+    position: absolute;
+    top: 40px;
     width: 100%;
 }
 .body_bg .container_60{
@@ -92,11 +93,26 @@ div.left-title{
     text-align: center;
 }
 .login .col-md-7.center{
-     width: 280px;
+    width: 280px;
 }
 .login #submit{
     margin: 0 0 10px 10px;
     width: 240px;
+}
+.edit-post .flask-pagedown{
+    width: 50%;
+    float: left;
+    height: 100%;
+}
+.edit-post .form-control{
+    width: 100%;;
+    height: 100%;
+    overflow: scroll;
+}
+.edit-post .flask-pagedown-preview{
+    width: 50%;
+    float: left;
+    height: 100%;
 }
 .register .col-md-4{
     float: none;
@@ -105,15 +121,18 @@ div.left-title{
     margin: 0 auto;
 }
 div.mobile-left-title{
-     height: initial;
-     float: none;
-     width: 100%;
+    height: initial;
+    float: none;
+    width: 100%;
+}
+.post .alert{
+     position: static;
 }
 div.block{
-     margin-left: auto;
-     margin-right: auto;
-     height: 800px;
-     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 800px;
+    width: 100%;
 }
 div.comment-form{
     margin-left: 30px;
@@ -133,11 +152,11 @@ li.post div.authorname{
     float: left;
 }
 ul.posts li.post div.post-body{
-     height: 100px;
-     font-size: x-large;
-     padding-top: 20px;
-     text-overflow: ellipsis;
-     overflow: hidden;
+    height: 100px;
+    font-size: x-large;
+    padding-top: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 ul.posts {
     list-style-type: none;
@@ -161,9 +180,9 @@ ul.followed-by{
     width: 100%;
 }
 div.comment{
-     border-top: thin solid;
-     padding-top: 10px;
-     padding-left: 5px;
+    border-top: thin solid;
+    padding-top: 10px;
+    padding-left: 5px;
 }
 div.post-date {
     float: right;
@@ -218,14 +237,14 @@ div.author_ext_link p{
     margin: 0;
 }
 div.article-author .author_ext_link .border{
-     border-left: solid 1px;
-     border-right: solid 1px;
+    border-left: solid 1px;
+    border-right: solid 1px;
 }
 .article-head{
-     width: 150px;
-     height: 150px;
-     margin: 0 auto;
-     margin-bottom: 10px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 .article-head img{
     border-radius: 50%;
@@ -236,8 +255,23 @@ div.article-btn-edit{
 a.btn-editpost{
     margin-top: 20px;
 }
+.edit-post, .edit-post .content, .edit-post .form,
+.edit-post .form-group{
+    height: 100%;
+}
+.edit-post .content, .edit-post .form{
+    margin-top: -40px;
+    padding-top: 40px;
+}
+.edit-post .form-group{
+    margin: 0;
+    padding-bottom: 10px;
+}
+.edit-post #submit{
+    margin: 0;
+}
 a.article-username{
-     font-size: 30px;
+    font-size: 30px;
 }
 div.followed-by{
     text-align: center;
@@ -305,7 +339,7 @@ div.index-content{
     float: left;
 }
 div.show{
-     display: block;
+    display: block;
 }
 div.mobile-index-content{
     margin: 0 1em 0 1em;
@@ -331,8 +365,8 @@ div.index-body .center{
     position: relative;
 }
 div.login-info .center{
-     margin: 0 auto;
-     float: none;
+    margin: 0 auto;
+    float: none;
 }
 div.nav-header{
     padding-top: 16px;
@@ -440,7 +474,7 @@ div.login .form label{
     margin: 6px 10px 6px 0px;
 }
 div.login .form .checkbox label{
-     float: none;
+    float: none;
 }
 div.login-header p{
     margin: 0px;
@@ -504,7 +538,7 @@ div.fans-profile #follower-profile div{
     text-align: center;
 }
 li.fans #is-follow-or-not{
-     float: left;
+    float: left;
 }
 #follower-profile{
     clear: left;
@@ -526,7 +560,7 @@ li.fans #is-follow-or-not{
     width: 100%;
 }
 #navbar .navbar-nav a{
-     padding: 10px 15px;
+    padding: 10px 15px;
 }
 .navbar-nav{
     float: right;
