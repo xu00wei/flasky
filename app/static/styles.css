@@ -112,6 +112,7 @@ div.left-title{
 .edit-post .flask-pagedown-preview{
     width: 50%;
     float: left;
+    overflow: scroll;
     height: 100%;
 }
 .register .col-md-4{
