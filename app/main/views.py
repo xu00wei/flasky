@@ -29,12 +29,12 @@ from ..decorators import admin_required, permission_required
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    form = PostForm()
-    if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
-        post = Post(body=form.body.data,
-                    author=current_user._get_current_object())
-        db.session.add(post)
-        return redirect(url_for('.index'))
+    # form = PostForm()
+    # if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
+        # post = Post(body=form.body.data,
+                    # author=current_user._get_current_object())
+        # db.session.add(post)
+        # return redirect(url_for('.index'))
     # show_followed = False
     # if current_user.is_authenticated:
         # show_followed = bool(request.cookies.get('show_followed', ''))
@@ -47,21 +47,37 @@ def index():
     pagination = query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
     # posts = Post.query.order_by(Post.timestamp.desc()).all()
     posts = pagination.items
-    return render_template('index1.html', form=form, posts=posts, pagination=pagination, show_followed=show_followed)
+    return render_template('index1.html', posts=posts, pagination=pagination, show_followed=show_followed)
+
+@main.route('/look-around')
+def look_around():
+    resp = make_response(redirect(url_for('.test')))
+    resp.set_cookie('INDEX_POST_VIEW','look-around', max_age=3600)
+    return resp
+
+@main.route('/new-posts')
+def new_posts():
+    resp = make_response(redirect(url_for('.test')))
+    resp.set_cookie('INDEX_POST_VIEW','new', max_age=3600)
+    return resp
 
 @main.route('/test', methods=['GET', 'POST'])
 def test():
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
-    posts = pagination.items
-    return render_template('index2.html', posts=posts, pagination=pagination)
+    query = Post.query
+    # print request.cookies.get('INDEX_POST_VIEW')
+    # print "------------------------"
+    post_view = request.cookies.get('INDEX_POST_VIEW')
+    if post_view is None:
+        post_view = 'new'
 
-@main.route('/test2', methods=['GET', 'POST'])
-def test2():
-    page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
+    if post_view == 'look-around':
+        pagination = query.order_by(Post.timestamp).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
+    else:
+        pagination = query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
     posts = pagination.items
-    return render_template('index2.html', posts=posts, pagination=pagination)
+    # print post_view
+    return render_template('index2.html', posts=posts, pagination=pagination, post_view=post_view)
 
 @main.route('/writing', methods=['GET', 'POST'])
 def writing():

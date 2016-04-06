@@ -21,7 +21,7 @@ def make_shell_context():
 
 @manager.command
 def deploy():
-    ''' 自动配置任务 '''
+    ''' 自动生成权限类 '''
     from flask.ext.migrate import upgrade
     from app.models import Role
     upgrade()

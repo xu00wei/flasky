@@ -134,6 +134,9 @@ li.post div.authorname{
 }
 ul.posts li.post div.post-body{
      height: 100px;
+     font-size: x-large;
+     padding-top: 20px;
+     text-overflow: ellipsis;
      overflow: hidden;
 }
 ul.posts {
@@ -166,13 +169,14 @@ div.post-date {
     float: right;
 }
 div.post-author {
+    float: left;
+    margin-right: 10px;
     font-weight: bold;
 }
 div.post-thumbnail {
     position: absolute;
 }
 div.post-content {
-    margin-left: 48px;
     min-height: 48px;
 }
 div.content-order-by .order-nav a{

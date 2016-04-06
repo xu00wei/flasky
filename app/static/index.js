@@ -15,7 +15,7 @@ $(document).ready(function(){
     var need_remove_circle = true;
     var window_width = $(window).width();
     var window_height = $(window).height();
-    var posts_order_nav_activer = $(".order-nav .first");
+    var posts_order_nav_activer = $(".order-nav .activeit");
     var page_nav_activer = $(".page-nav ul").children('li.active');
 
     function navIconChange(){

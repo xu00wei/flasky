@@ -26,7 +26,11 @@
                 <div class="center center-mobile">
                     <ul class="nav navbar-nav ">
                         <li class="go-index"><a href="#">首页</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li ><a href="{{url_for('auth.logout')}}">登出</a></li>
+                        {% else %}
                         <li ><a href="{{url_for('auth.login')}}">登入</a></li>
+                        {% endif %}
                         <li ><a href="#">关于</a></li>
                     </ul>
                 </div>
@@ -68,20 +72,30 @@
 
         <div class="content-order-by">
             <ul class="nav nav-pills order-nav">
-                <li role="presentation" class="first activeit"><a href="#">最新</a></li>
+                <li role="presentation" {% if post_view == 'new'%}class="activeit"{% endif %}><a href="{{ url_for(".new_posts") }}">最新</a></li>
                 <li role="presentation"><a href="#">最热</a></li>
-              <li role="presentation"><a href="#">随便看</a></li>
+                <li role="presentation" {% if post_view == 'look-around'%}class="activeit"{% endif %}><a href="{{url_for(".look_around")}}">随便看</a></li>
             </ul>
         </div>
         <div class="posts">
             {% include "_posts.html"%}
         </div>
         <div class="pagination">
-            {{ macros.pagination_widget(pagination, '.test2') }}
+            {{ macros.pagination_widget(pagination, '.test') }}
         </div>
     </div>
     
     <div class="page-ext">
     </div>
 </div>
+
+<!-- 右上角索引　-->
+{% include "_quick_nav.html" %}
+
 {% endblock %}
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.lang("zh-cn") }}
+{% endblock %}
+

@@ -16,7 +16,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first() # 查询数据库中的帐号
         if user is not None and user.verify_password(form.password.data): # 验证密码
             login_user(user, form.remember_me.data) # 存储是否自动登入信息
-            return redirect(url_for('main.test2')) # 跳转原请求网页或首页
+            return redirect(url_for('main.test')) # 跳转原请求网页或首页
         flash('无效的用户名或密码') # 用户名不存在或密码错误
     return render_template('auth/login.html', form=form) # 重新输入登入信息
 
@@ -35,7 +35,7 @@ def register():
         token = user.generate_confirmation_token()
         send_email(user.email, '确认您的帐号', 'auth/email/confirm', user=user, token=token)
         flash('认证邮件已经发送至您的邮箱,请您在一个小时内完成认证!')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('.login'))
     return render_template('auth/register.html', form=form)
 
 @auth.route('/logout')
