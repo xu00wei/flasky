@@ -72,9 +72,9 @@
 
         <div class="content-order-by">
             <ul class="nav nav-pills order-nav">
-                <li role="presentation" {% if post_view == 'new'%}class="activeit"{% endif %}><a href="{{ url_for(".new_posts") }}">最新</a></li>
+                <li role="presentation" {% if post_view == 'new'%}class="activeit"{% endif %}><a href="{{ url_for("main.new_posts") }}">最新</a></li>
                 <li role="presentation"><a href="#">最热</a></li>
-                <li role="presentation" {% if post_view == 'look-around'%}class="activeit"{% endif %}><a href="{{url_for(".look_around")}}">随便看</a></li>
+                <li role="presentation" {% if post_view == 'look-around'%}class="activeit"{% endif %}><a href="{{url_for("main.look_around")}}">随便看</a></li>
             </ul>
         </div>
         <div class="posts">
