@@ -65,6 +65,7 @@ $(document).ready(function(){
         if( $(window).width() >= 768 ){
             $("#title").animate({ width:'25%'},'normal',function(){
                 $("#title").addClass("left-title").removeClass("full-title").removeAttr("style");
+                $('.dropdown').css("display","block");
                 $('#index-content').css("display","block");
                 $('.index-bgcolor').css("background-position","-500px 0px");
             });

@@ -538,7 +538,7 @@ div.fans-profile #follower-profile div{
     line-height: 2em;
     overflow: hidden;
 }
-.dropdown {
+body.index-show .dropdown {
     display: none;
 }
 #follower-name{

@@ -7,7 +7,9 @@
 <script src='/static/jquery-2.2.2.min.js'></script>
 <script src="/static/index.js"></script>
 {% endblock %}
-
+{% block body_attribs %}
+    class="index-show"
+{% endblock %}
 {% block content %}
 <!-- 左边索引　-->
 <div class="full-title" id="title">
@@ -89,10 +91,10 @@
     <div class="page-ext">
     </div>
 </div>
-{% endblock %}
-<!-- 右上角索引 -->
+<!-- 右上角导航图标　-->
 {% include "_quick_nav.html" %}
 
+{% endblock %}
 {% block scripts %}
     {{ super() }}
     {{ moment.include_moment() }}
