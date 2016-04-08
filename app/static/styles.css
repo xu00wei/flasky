@@ -538,6 +538,9 @@ div.fans-profile #follower-profile div{
     line-height: 2em;
     overflow: hidden;
 }
+.dropdown {
+    display: none;
+}
 #follower-name{
     font-size: 25px;
     float: left;
@@ -602,9 +605,7 @@ li.fans #is-follow-or-not{
         font-size: 25px;
         float: none;
      }
-     .dropdown {
-          display: none;
-     }
+     
      body.index2 .dropdown{
          display: block;
      }
