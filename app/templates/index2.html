@@ -7,6 +7,7 @@
 {% block head %}
 {{ super() }}
 <link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="styles.css") }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="index2.css") }}"
 <script src='/static/jquery-2.2.2.min.js'></script>
 <script src="/static/index.js"></script>
 {% endblock %}
@@ -35,6 +36,7 @@
                     </ul>
                 </div>
             </div>
+            {% if current_user.authenticated %}
             <div class="contain nav-head" id="nav-head">
                 <div class="nav-header">
                     <button type="button" class="nav-mobile navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,9 +54,9 @@
                         <li ><a href="#">关于</a></li>
                     </ul>
                 </div>
-
+            
             </div>
-
+            {% endif %}
         </div>
     </div>
 </div>

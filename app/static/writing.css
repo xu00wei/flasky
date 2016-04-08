@@ -68,6 +68,11 @@ form #title{
      height: 40px;
      background: #ededed;
 }
+.post-text{
+     height: 100%;
+     padding-top: 120px;
+     margin-top: -80px;
+}
 #post_submit{
      width: 140px;
      margin: 0 30px;
@@ -76,4 +81,10 @@ form #title{
      background-color:rgba(168,26,3,0.8);
      font-size: 2em;
      color: white;
+}
+@media (max-width: 768px){
+    #post_submit{
+    width: 80px;
+    margin: 0px;
+    }
 }

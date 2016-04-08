@@ -74,6 +74,8 @@ $(document).ready(function(){
             $(".index-font .font").css("display", "none");
             $(".index-font .long-line").css("display","none");
             $("#title").animate({ height:'140px' }, 'normal', function(){
+                $('#nav-head').css("display","none");
+                $('.dropdown').css("display","block");
                 $("#title").addClass("mobile-left-title").removeClass("full-title").removeAttr("style");
                 $('#index-content').addClass("mobile-index-content").removeClass("index-content").css("display","block");
             });

@@ -23,7 +23,11 @@
                 <div class="center center-mobile">
                     <ul class="nav navbar-nav ">
                         <li class="go-index"><a href="#">首页</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li ><a href="{{url_for('auth.logout')}}">登出</a></li>
+                        {% else %}
                         <li ><a href="{{url_for('auth.login')}}">登入</a></li>
+                        {% endif %}
                         <li ><a href="#">关于</a></li>
                     </ul>
                 </div>
@@ -41,7 +45,11 @@
                 <div class="navbar-collapse collapse site">
                     <ul class="nav navbar-nav">
                         <li class="go-index"><a href="#">首页</a></li>
+                        {% if current_user.is_authenticated %}
+                        <li ><a href="{{url_for('auth.logout')}}">登出</a></li>
+                        {% else %}
                         <li ><a href="{{url_for('auth.login')}}">登入</a></li>
+                        {% endif %}
                         <li ><a href="#">关于</a></li>
                     </ul>
                 </div>
@@ -82,6 +90,8 @@
     </div>
 </div>
 {% endblock %}
+<!-- 右上角索引 -->
+{% include "_quick_nav.html" %}
 
 {% block scripts %}
     {{ super() }}

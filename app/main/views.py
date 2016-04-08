@@ -82,8 +82,8 @@ def test():
 @main.route('/writing', methods=['GET', 'POST'])
 def writing():
     form = PostForm(request.form)
-    print form.validate_on_submit()
-    print form.errors
+    # print form.validate_on_submit()
+    # print form.errors
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
         post = Post(title=form.title.data,
                     body=form.body.data,

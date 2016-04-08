@@ -1,0 +1,31 @@
+@media (max-width: 768px){
+    #title{
+        height: auto;
+        float: none;
+        width: 100%;
+        bottom: auto;
+        position: static;
+    }
+    .nav li, .nav li a{
+        position: static!important;
+    }
+    .index-bgcolor{
+        background-position-x: center!important;
+    }
+    .dropdown .btn, .dropdown{
+        background: none!important;
+    }
+    #index-content{
+        height: auto;
+        margin: 0;
+        width: 100%;
+        float: none;
+    }
+    
+    .page-content{
+        margin-left: auto!important;
+    }
+    .index-font .font, .long-line, .short-line{
+        display: none;
+    }
+}

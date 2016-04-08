@@ -43,7 +43,7 @@ class EditProfileAdminForm(Form):
 
 class PostForm(Form):
     title = StringField('', validators=[Required()])
-    submit = SubmitField('发表文章')
+    submit = SubmitField('')
     body = PageDownField('', validators=[Required()])
 
 class EditPostForm(Form):

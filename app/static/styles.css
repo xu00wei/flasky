@@ -122,7 +122,7 @@ div.left-title{
     margin: 0 auto;
 }
 div.mobile-left-title{
-    height: initial;
+    height: 40px;
     float: none;
     width: 100%;
 }
@@ -247,6 +247,12 @@ div.article-author .author_ext_link .border{
     margin: 0 auto;
     margin-bottom: 10px;
 }
+.mobile-article-head{
+    position: fixed;
+    display: none;
+    top: 10px;
+    left: 20px;
+}
 .article-head img{
     border-radius: 50%;
 }
@@ -343,7 +349,7 @@ div.show{
     display: block;
 }
 div.mobile-index-content{
-    margin: 0 1em 0 1em;
+    margin: 40px 1em 0 1em;
     padding: 0;
 }
 div.index-content .page-content{
@@ -382,6 +388,7 @@ div.nav-head .site{
 div.nav-head .site ul{
     width: 60%;
     padding: 10px;
+    float: none;
     margin: 0 auto;
 }
 div.nav-head .site li{
@@ -397,8 +404,7 @@ div.index-opacity .nav-head{
     position: fixed;
     width: 100%;
     height: 60px;
-    background-color: cadetblue;
-    opacity: 0.3;
+    background-color: rgba(243, 250, 250, 0.4);
     top: 0;
 }
 div.index-font{
@@ -443,7 +449,7 @@ textarea.form-control{
     height: 100%;
     display: table;
     /*background-color: #005F6F;*/
-    background: url('index_bg.png') no-repeat;
+    background: url('index_bg.png') no-repeat center center;
     background-attachment: fixed;
     background-size: cover;
 
@@ -595,6 +601,39 @@ li.fans #is-follow-or-not{
         padding: 0px;
         font-size: 25px;
         float: none;
+     }
+     .dropdown {
+          display: none;
+     }
+     body.index2 .dropdown{
+         display: block;
+     }
+     .dropdown, .dropdown .btn{
+         background: none;
+     }
+     body.post div.dropdown{
+         background: none;
+         display: block;
+         top: 10px;
+     }
+
+     body.post div.dropdown .btn{
+         background: none;
+         color: white;
+     }
+     div.article-author .profile div.mobile-article-head{
+          display: block;
+     }
+     div.article-author  .profile div{
+          display: none;
+     }
+     div.article-author{
+         height: 40px;
+         width: 100%;
+     }
+     div.article-content{
+        width: 100%;
+        margin: 55px 0 0 0;
      }
 
 }
