@@ -36,9 +36,9 @@ $(document).ready(function(){
      */
     $(window).resize(function(){
         now_window_width = $(window).width();
-        login_height = $(window).height() - 50;
+        //login_height = $(window).height() - 50;
 
-        $('.login').css("height",login_height+"px");
+        //$('.login').css("height",login_height+"px");
 
         if(now_window_width <= 768 && window_width > 768 && $('#title').attr("class") != "full-title"){
             $("#title").addClass("mobile-left-title").removeClass("left-title");

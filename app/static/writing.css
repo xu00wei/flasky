@@ -6,7 +6,7 @@ div.flask-pagedown-preview{
     overflow:scroll;
     padding: 10px;
     border: thin;
-    width: 55%;
+    width: 50%;
     color: aliceblue;
     background:#48525e;
 }
@@ -18,7 +18,7 @@ textarea.flask-pagedown-input{
 }
 .flask-pagedown{
     float: left;
-    width: 45%;
+    width: 50%;
 }
 form, .flask-pagedown, #flask-pagedown-body-preview, .post-container, #flask-pagedown-body{
     height: 100%;
@@ -86,5 +86,8 @@ form #title{
     #post_submit{
     width: 80px;
     margin: 0px;
+    }
+    .post-tool ul li{
+         margin: 0;
     }
 }

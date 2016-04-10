@@ -461,10 +461,11 @@ textarea.form-control{
 div.login{
     width: 100%;
     height: 100%;
-    margin-top: -50px;
+    margin-top: -40px;
+    padding-top: 40px;
     display: table;
     background: url('body_bg 2.jpg') no-repeat center;
-    background-position-y: 3px;
+    background-position-y: -5px;
 }
 div.login .login-site{
     width: 400px;
@@ -538,7 +539,7 @@ div.fans-profile #follower-profile div{
     line-height: 2em;
     overflow: hidden;
 }
-body.index-show .dropdown {
+body.index-show .dropdown, body.register_bgcolor .dropdown {
     display: none;
 }
 #follower-name{
@@ -604,37 +605,48 @@ li.fans #is-follow-or-not{
         padding: 0px;
         font-size: 25px;
         float: none;
-     }
-     
-     body.index2 .dropdown{
-         display: block;
-     }
-     .dropdown, .dropdown .btn{
-         background: none;
-     }
-     body.post div.dropdown{
-         background: none;
-         display: block;
-         top: 10px;
-     }
+    }
+    div.login .login-site{
+         width: 300px;
+    }
+    body.index2 .dropdown{
+        display: block;
+    }
+    .dropdown, .dropdown .btn{
+        background: none;
+    }
+    body.post div.dropdown{
+        background: none;
+        display: block;
+        top: 10px;
+    }
+    body.register_bgcolor div.dropdown{
+        background: none;
+        display: block;
+        right: 10px;
+        top: 5px;
+    }
+    body.register_bgcolor div.navbar{
+        position: static;
+    }
 
-     body.post div.dropdown .btn{
-         background: none;
-         color: white;
-     }
-     div.article-author .profile div.mobile-article-head{
-          display: block;
-     }
-     div.article-author  .profile div{
-          display: none;
-     }
-     div.article-author{
-         height: 40px;
-         width: 100%;
-     }
-     div.article-content{
+    body.post div.dropdown .btn{
+        background: none;
+        color: white;
+    }
+    div.article-author .profile div.mobile-article-head{
+         display: block;
+    }
+    div.article-author  .profile div{
+         display: none;
+    }
+    div.article-author{
+        height: 40px;
         width: 100%;
-        margin: 55px 0 0 0;
-     }
+    }
+    div.article-content{
+       width: 100%;
+       margin: 55px 0 0 0;
+    }
 
 }

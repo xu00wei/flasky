@@ -63,19 +63,19 @@
 </div>
 <!-- 主页内容　-->
 <div class="index-content" id="index-content">
-    <div class="page-nav nav nav-pills">
-        <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="#">千絮</a></li>
-            <li role="presentation" ><a href="#">时光</a></li>
-            <li role="presentation"><a href="#">留香</a></li>
-        </ul>
-    </div>
+    <!--<div class="page-nav nav nav-pills">-->
+        <!--<ul class="nav nav-pills">-->
+            <!--<li role="presentation" class="active"><a href="#">千絮</a></li>-->
+            <!--<li role="presentation" ><a href="#">时光</a></li>-->
+            <!--<li role="presentation"><a href="#">留香</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
 
     <div class="page-content">
 
         <div class="content-order-by">
             <ul class="nav nav-pills order-nav">
-                <li role="presentation" class="first activeit"><a href=".new_posts">最新</a></li>
+                <li role="presentation" class="first activeit"><a href="{{url_for(".new_posts")}}">最新</a></li>
                 <li role="presentation"><a href="#">最热</a></li>
                 <li role="presentation"><a href="{{url_for("main.look_around")}}">随便看</a></li>
             </ul>
