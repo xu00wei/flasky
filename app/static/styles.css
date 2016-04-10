@@ -9,6 +9,13 @@ html,body{
 hr{
    border-top: 1px solid rgba(87,41,15,0.3);
 }
+body a{
+    color: rgba(87,41,15,0.8);
+}
+a:hover{
+    color: #D3A15B;
+    text-decoration: none;
+}
 .container{
     width: 100%;
     padding: 0;
@@ -153,9 +160,11 @@ li.post div.authorname{
     float: left;
 }
 ul.posts li.post div.post-body{
-    height: 100px;
-    font-size: x-large;
+    height: 60px;
+    font-size: 25px;
+    color: rgba(0,0,0,0.7);
     padding-top: 20px;
+    margin-bottom: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -167,11 +176,23 @@ ul.posts {
     margin-top: 10px;
 }
 ul.posts li.post {
-    padding: 8px;
     border-bottom: 1px solid #e0e0e0;
 }
 ul.posts li.post:hover {
     background-color: #f0f0f0;
+    text-decoration: none;
+}
+ul.posts .post-more{
+     height: 30px;
+}
+ul.posts .post-more li{
+    list-style-type: none;
+    color: #999999;
+    float: left;
+}
+ul.posts em{
+    font-style: normal;
+    font-size: 12px;
 }
 div.post-hight{
     margin-bottom: 25px;
@@ -198,6 +219,7 @@ div.post-thumbnail {
 }
 div.post-content {
     min-height: 48px;
+    padding-top: 10px;
 }
 div.content-order-by .order-nav a{
     border-radius: 20px;
@@ -210,12 +232,13 @@ div.content-order-by .activeit a{
     color: white;
 }
 div.article-author{
-    background-color: rgba(0,0,0,0.7);
+    background: url("index_bg.png") no-repeat;
+    background-position-x: right;
+    background-size: cover;
     height: 100%;
     width: 20%;
     position: fixed;
     padding-top: 50px;
-    border-bottom: thin solid;
 }
 div.article-author .profile{
     margin: 0 auto;
@@ -619,6 +642,9 @@ li.fans #is-follow-or-not{
         background: none;
         display: block;
         top: 10px;
+    }
+    ul.posts li.post{
+         padding: 10px;
     }
     body.register_bgcolor div.dropdown{
         background: none;
