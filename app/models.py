@@ -264,10 +264,11 @@ class Post(db.Model):
     # markdown的ＨＴＭＬ客户端转化
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
-        allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em',
-                        'i', 'li', 'oi', 'pre', 'strong', 'ul', 'h1', 'h2', 'h3', 'p']
+        # allowed_tags = ['a', 'abbr', 'acronym', 'b', 'blockquote', 'code', 'em',
+        #                 'i', 'li', 'oi', 'pre', 'strong', 'ul', 'h1', 'h2', 'h3', 'p']
         origin_html = markdown(value, output_format='html')
-        target.body_html = bleach.linkify(bleach.clean(origin_html, tags=allowed_tags, strip=True))
+        # target.body_html = bleach.linkify(bleach.clean(origin_html, tags=allowed_tags, strip=True))
+        target.body_html = origin_html
 
     def to_json(self):
         json_post = {

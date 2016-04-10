@@ -134,6 +134,14 @@ div.left-title{
     padding-bottom: 10px;
     margin: 0 auto;
 }
+.register input{
+     width: 100%;
+     padding: 10px;
+     margin-bottom: 10px;
+}
+.register .col-md-4 #submit{
+    margin: 0px;
+}
 div.mobile-left-title{
     height: 40px;
     float: none;
@@ -514,6 +522,9 @@ div.login .form .checkbox label{
 }
 div.login-header p{
     margin: 0px;
+}
+div.login-header a{
+    text-decoration: underline;
 }
 div.login .form .form-group{
     text-align: right;
