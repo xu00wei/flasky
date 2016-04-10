@@ -50,8 +50,6 @@ def logout():
 
 @auth.route('/confirm/<token>')
 def confirm(token):
-    if current_user.confirmed:
-        return redirect(url_for('main.index'))
 
     s = Serializer(current_app.config['SECRET_KEY'])
     try:
@@ -62,6 +60,10 @@ def confirm(token):
 
     uid = data.get('confirm')
     user = User.query.filter_by(id=uid).first()
+
+    if user.confirmed:
+        return redirect(url_for('main.index'))
+
     if user:
         user.confirmed = 1
         db.session.add(user)
