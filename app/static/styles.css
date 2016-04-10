@@ -5,6 +5,9 @@ body{
     helvetica, "Hiragino Sans GB", "Microsoft YaHei", 
     "WenQuanYi Micro Hei", sans-serif;
 }
+img{
+    width: 100%;
+}
 html,body{
     height: 100%;
     width: 100%;

@@ -90,7 +90,7 @@ def writing():
                     body=form.body.data,
                     author=current_user._get_current_object())
         db.session.add(post)
-        return redirect(url_for(".user", username = current_user.username))
+        return redirect(url_for(".user_posts", username = current_user.username))
     return render_template('writing.html', form=form)
 
 @main.route('/ppt')
@@ -103,6 +103,8 @@ def post(id):
     form = CommentForm()
     page = request.args.get('page',1, type=int)
     per_page = current_app.config['FLASKY_COMMENTS_PER_PAGE']
+    post.read += 1
+    db.session.add(post)
     if form.validate_on_submit():
         if current_user.is_anonymous:
             flash('你需要登入才能评论')
