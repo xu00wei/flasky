@@ -8,17 +8,14 @@
 
 {% block page_content %}
 <div class="page-header">
-    <h1>
-        您好, {{ current_user.username }}!
-    </h1>
-    <h3>您还未登入您的帐号</h3>
+    <h3>您还未验证您的帐号</h3>
     <p>
         您必须认证了帐号才能浏览此页面
         请检测您的邮箱，只有点击了认证邮件链接后才能完成认证！
     </p>
     <p>
         需要重新发送一条认证邮件？
-        <a href="{{ url_for('auth.resend_confirmation') }}">点击这里</a>
+        <a href="{{ url_for('auth.resend_confirmation', uid=uid) }}">点击这里</a>
     </p>
 </div>
 {% endblock %}

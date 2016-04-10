@@ -63,6 +63,7 @@ def new_posts():
 
 @main.route('/test', methods=['GET', 'POST'])
 def test():
+    print "this is test"
     page = request.args.get('page', 1, type=int)
     query = Post.query
     # print request.cookies.get('INDEX_POST_VIEW')

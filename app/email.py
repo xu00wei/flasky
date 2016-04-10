@@ -1,3 +1,4 @@
+# -*- encoding=utf-8 -*-
 # from flask.ext.mail import Message
 from threading import Thread
 from flask import render_template, current_app
@@ -23,7 +24,7 @@ def send_email(to, subject, template, **kwargs):
     data={
             "from": app.config["FLASKY_MAIL_SENDER"],
             "to": [ to ],
-            "subject": "Hello",
+            "subject": "轻翰",
         "text": render_template(template + '.txt', **kwargs)
         }
     thr = Thread(target=send_async_email, args=[app, auth, data])

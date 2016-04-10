@@ -100,7 +100,7 @@ class User(UserMixin, db.Model):
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
         if self.role is None:
-            if self.email == current_app.config['FLASK_ADMIN']:
+            if self.email == current_app.nonfig['FLASK_ADMIN']:
                 self.role_id = Role.query.filter_by(permissions=0xff).first().id
             else:
                 self.role_id = Role.query.filter_by(default=True).first().id
@@ -153,21 +153,13 @@ class User(UserMixin, db.Model):
         s = Serializer(current_app.config['RESET_KEY'], expiration)
         return s.dumps({'reset':self.id})
 
+    def generate_auth_id_token(self):
+        s = Serializer(current_app.config['CONVEY_UID_KEY'])
+        return s.dumps({'id': self.id})
+
     def generate_auth_token(self, expiration):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'id': self.id})
-
-    def confirm(self, token):
-        s = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            data = s.loads(token) # 将令牌字符串反解析成数据(此处数据为id)
-        except:
-            return False
-        if data.get('confirm') != self.id:
-            return False
-        self.confirmed = True
-        db.session.add(self)
-        return True
 
     def confirm_reset(self, token):
         s = Serializer(current_app.config['RESET_KEY'])
@@ -178,6 +170,15 @@ class User(UserMixin, db.Model):
         if data.get('reset') != self.id:
             return False
         return True
+
+    @staticmethod
+    def confirm_uid_token(token):
+        s = Serializer(current_app.config['CONVEY_UID_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return None
+        return User.query.get(data['id'])
 
     @staticmethod
     def confirm_auth_token(token):
