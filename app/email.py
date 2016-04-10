@@ -22,7 +22,7 @@ def send_email(to, subject, template, **kwargs):
     auth=("api", app.config['MAIL_API_KEY'])
     data={
             "from": app.config["FLASKY_MAIL_SENDER"],
-            "to": [ to, app.config['FLASKY_MAIL_SENDER'] ],
+            "to": [ to ],
             "subject": "Hello",
         "text": render_template(template + '.txt', **kwargs)
         }
