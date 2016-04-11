@@ -45,7 +45,7 @@
             <div class="back-index">
                 <ul>
                     <li class="btn-default">
-                    {% if current_user.is_following(user) %}
+                    {% if not current_user.is_anonymous and current_user.is_following(user) %}
                     <a href="{{ url_for('main.unfollow', username=user.username) }}" >已关注</a>
                     {% else %}
                     <a href="{{ url_for('main.follow', username=user.username) }}" >关注我</a>

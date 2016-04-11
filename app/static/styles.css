@@ -671,6 +671,21 @@ li.fans #is-follow-or-not{
         display: none;
     }
 
+    .body_bg .container_60{
+        width: 350px;
+    }
+    div.fans{
+        padding-left: 10px;
+        background: none;
+    }
+    .container.body_bg{
+        padding: 20px;
+    }
+    li.fans{
+        height: 170px;
+        width: 340px;
+        border: solid 10px rgba(255,255,255,0.4);
+    }
     .nav-mobile{
         display: block;
         margin: 0 auto;
@@ -693,6 +708,9 @@ li.fans #is-follow-or-not{
         width: 100%;
         background: rgba(255,230,175,0.4);
     }
+    .followed-by-border{
+        display: none;
+    }
     body.index2 .dropdown{
         display: block;
     }
@@ -704,8 +722,11 @@ li.fans #is-follow-or-not{
         display: block;
         top: 10px;
     }
+    body.register_bgcolor #navbar .container .collapse{
+        display: none;
+    }
     ul.posts li.post{
-         padding: 10px;
+        padding: 10px;
     }
     body.register_bgcolor div.dropdown{
         background: none;
@@ -734,6 +755,17 @@ li.fans #is-follow-or-not{
        div.article-content{
        width: 100%;
        margin: 55px 0 0 0;
+    }
+
+    .container .navbar-collapse{
+        margin-left: auto;
+        display: block;
+    }
+    .container .navbar-collapse ul.navbar-nav{
+         margin: 0px;
+    }
+    .navbar-collapse .navbar-nav li{
+        float: left;
     }
 
 }
