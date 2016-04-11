@@ -47,6 +47,7 @@ class PostForm(Form):
     body = PageDownField('', validators=[Required()])
 
 class EditPostForm(Form):
+    title = StringField('', validators=[Required()])
     body = PageDownField('',validators=[Required()])
     submit = SubmitField('提交修改')
 

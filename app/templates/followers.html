@@ -9,7 +9,8 @@ class="container body_bg"
     <div class="followed-by-border">
         <div class="followed-by">
             <div class="user-img">
-                <img src="{{ user.gravatar(200) }}">
+                <!--<img src="{{ user.gravatar(200) }}">-->
+                <img src="{{ url_for("static", filename="default_img.jpg") }}">
             </div>
             <div class="followed-info">
                 <h1>{{ user.username }}</h1>
@@ -33,7 +34,8 @@ class="container body_bg"
                 <li class="fans">
                     <div class="fans-border">
                         <div class="fans-icon">
-                            <img src="{{ follower.user.gravatar(70) }}" class="img-circle">
+                            <!--<img src="{{ follower.user.gravatar(70) }}" class="img-circle">-->
+                            <img src="{{ url_for("static", filename="default_img.jpg") }}">
                         </div>
                         <div class="fans-profile">
                             <div id="follower-name">

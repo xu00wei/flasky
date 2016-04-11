@@ -55,6 +55,12 @@ def look_around():
     resp.set_cookie('INDEX_POST_VIEW','look-around', max_age=3600)
     return resp
 
+@main.route('/hot')
+def read_hot():
+    resp = make_response(redirect(url_for('.test')))
+    resp.set_cookie("INDEX_POST_VIEW",'read-hot',max_age=3600)
+    return resp
+
 @main.route('/new-posts')
 def new_posts():
     resp = make_response(redirect(url_for('.test')))
@@ -63,7 +69,7 @@ def new_posts():
 
 @main.route('/test', methods=['GET', 'POST'])
 def test():
-    print "this is test"
+    # print "this is test"
     page = request.args.get('page', 1, type=int)
     query = Post.query
     # print request.cookies.get('INDEX_POST_VIEW')
@@ -74,6 +80,8 @@ def test():
 
     if post_view == 'look-around':
         pagination = query.order_by(Post.timestamp).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
+    elif post_view == 'read-hot':
+        pagination = query.order_by(Post.read.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
     else:
         pagination = query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'])
     posts = pagination.items
@@ -129,11 +137,13 @@ def edit_post(id):
     form = EditPostForm()
     if form.validate_on_submit():
         post.body = form.body.data
+        post.title = form.title.data
         db.session.add(post)
         flash('编辑成功＾－＾')
         return redirect(url_for('.post', id=id))
     form.body.data = post.body
-    return render_template('edit_post.html', form=form)
+    form.title.data = post.title
+    return render_template('writing.html', form=form)
 
 @main.route('/comment-manage')
 @login_required
@@ -151,11 +161,12 @@ def user(username):
     if user is None:
         abort(404)
     posts = user.posts.order_by(Post.timestamp.desc()).all()
-    print len(posts)
-    if session.get('posts_request') is True:
-        session['posts_request'] = False
-        return render_template('user_posts.html', user=user, posts=posts)
-    return render_template('user.html',user=user, posts=posts)
+    return render_template("user_posts.html", user=user, posts=posts)
+   #  print len(posts)
+    # if session.get('posts_request') is True:
+        # session['posts_request'] = False
+        # return render_template('user_posts.html', user=user, posts=posts)
+    # return render_template('user.html',user=user, posts=posts)
 
 @main.route('/user/<username>/posts')
 def user_posts(username):

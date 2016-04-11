@@ -14,9 +14,9 @@
             </div>
             <div class="post-more">
                 <ul>
-                    <li><em>阅读 {{ post.timestamp.day * post.timestamp.second}} ·</em></li>
-                    <li><em>评论 {{ post.comments.count() }} ·</em></li>
-                    <li><em>喜欢 {{ post.comments.count() * post.timestamp.month + post.timestamp.hour }}</em></li>
+                    <li><em>阅读 {{ post.read }} · </em></li>
+                    <li><em>评论 {{ post.comments.count() }}</em></li>
+                    <!--<li><em>喜欢 {{ post.comments.count() * post.timestamp.month + post.timestamp.hour }}</em></li>-->
                 </ul>
             </div>
         </div>

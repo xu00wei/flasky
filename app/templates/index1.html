@@ -76,7 +76,7 @@
         <div class="content-order-by">
             <ul class="nav nav-pills order-nav">
                 <li role="presentation" class="first activeit"><a href="{{url_for(".new_posts")}}">最新</a></li>
-                <li role="presentation"><a href="#">最热</a></li>
+                <li role="presentation"><a href="{{ url_for("main.read_hot") }}">最热</a></li>
                 <li role="presentation"><a href="{{url_for("main.look_around")}}">随便看</a></li>
             </ul>
         </div>

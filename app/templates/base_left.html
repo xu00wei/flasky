@@ -6,6 +6,7 @@
 {% block head %}
 {{ super() }}
 <link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="styles.css") }}">
+<!--<link rel='stylesheet' type="text/css" href="{{ url_for('static', filename="bootstrap.min.css") }}">-->
 <script src='/static/jquery-2.2.2.min.js'></script>
 <script src="/static/index.js"></script>
 {% endblock %}
@@ -15,10 +16,11 @@
 <div class="container">
     <div class="article-author">
         <div class="profile">
-            <div class="article-head" > <img src="{{ user.gravatar(150) }}"> </div>
+            <!--<div class="article-head" > <img src="{{ user.gravatar(150) }}"> </div>-->
+            <div class="article-head" > <img src="{{ url_for("static", filename="default_img.jpg") }}"> </div>
             <div class="article-userinfo">
-                <p><a class="article-username" href="{{ url_for('main.user', username=user.username) }}"> {{ user.username }}</a></p>
-                <p> email:&nbsp;{{ user.email }} </p>
+                <p><a class="article-username" href="{{ url_for('.user_posts', username=user.username) }}"> {{ user.username }}</a></p>
+                <!--<p> email:&nbsp;{{ user.email }} </p>-->
                 <!--{% if not current_user.username == user.username %}-->
                 <!--{{ macros.follow_or_not(user, current_user) }}-->
                 <!--{% endif %}-->
@@ -36,6 +38,23 @@
                     <p>{{ user.followers.count() }}</p>
                     <p>粉丝</p>
                 </a>
+            </div>
+            <div class="author-about">
+                <p>{% if user.about_me != None %} {{ user.about_me }} {% endif %}</p>
+            </div>
+            <div class="back-index">
+                <ul>
+                    <li class="btn-default">
+                    {% if current_user.is_following(user) %}
+                    <a href="{{ url_for('main.unfollow', username=user.username) }}" >已关注</a>
+                    {% else %}
+                    <a href="{{ url_for('main.follow', username=user.username) }}" >关注我</a>
+                    {% endif %}
+                    </li>
+
+                    <!--<li class="btn-default">{{ macros.follow_or_not(user, current_user) }}</li>-->
+                    <li class="btn-default"><a href="{{url_for("main.test")}}">回首页</a></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -59,6 +78,9 @@
 
 {% block scripts %}
     {{ super() }}
+   <!-- <script src = "{{url_for("static",filename="bootstrap.min.js")}}"></script>-->
+    <!--<script src = "{{url_for("static",filename="jquery.min.js")}}"></script>-->
+    <!--<script src = "{{url_for("static",filename="moment-with-locales.min.js")}}"></script>-->
     {{ moment.include_moment() }}
     {{ moment.lang("zh-cn") }}
 {% endblock %}

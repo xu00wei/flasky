@@ -29,8 +29,7 @@
 {% endmacro %}
 
 {% macro follow_or_not(user, current_user) %}
-    {% if current_user.username == user.username %}
-    {% elif current_user.is_anonymous or not current_user.is_following(user) %}
+    {% if current_user.is_anonymous or not current_user.is_following(user) %}
     <a href="{{ url_for('.follow', username=user.username) }}" class="btn btn-default follow">关注</a>
     {% else %}
     <a href="{{ url_for('.unfollow', username=user.username) }}" class="btn btn-default follow">已关注</a>
