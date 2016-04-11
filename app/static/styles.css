@@ -708,7 +708,7 @@ li.fans #is-follow-or-not{
         width: 100%;
         background: rgba(255,230,175,0.4);
     }
-    .followed-by-border, .followed-by{
+    .followed-by-border {
         display: none;
     }
     body.index2 .dropdown{
@@ -766,6 +766,9 @@ li.fans #is-follow-or-not{
     }
     .navbar-collapse .navbar-nav li{
         float: left;
+    }
+    #nav-head .navbar-collapse li{
+        float: none;
     }
 
 }
