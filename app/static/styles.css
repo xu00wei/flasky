@@ -708,7 +708,7 @@ li.fans #is-follow-or-not{
         width: 100%;
         background: rgba(255,230,175,0.4);
     }
-    .followed-by-border{
+    .followed-by-border, .followed-by{
         display: none;
     }
     body.index2 .dropdown{
