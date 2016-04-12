@@ -1,5 +1,8 @@
 {% extends "base_left.html"%}
 
+{% block body_attribs %}
+    class="user_posts"
+{% endblock %}
 {% block page_content%}
 <div class="posts">
 {% include "_posts.html"%}

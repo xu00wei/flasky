@@ -47,7 +47,7 @@ em {
 }
 .container.body_bg{
     background: url('fans_bg.jpg') no-repeat;
-    background-position: center -140px;
+    background-position: center -80px;
     padding-top: 20px;
     background-color: #F2E5D2;
 }
@@ -344,7 +344,7 @@ div.followed-by{
     height: 350px;
     border: rgba(0,0,0,0.1) solid 1px;
     border-radius: 5px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.1);
     /*background-color:lightblue;*/
 }
 div.followed-by-border{
@@ -594,7 +594,7 @@ li.fans{
 li.fans .fans-border{
     height: 150px;
     padding: 15px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.1);
     /*border: rgba(0,0,0,0.1) solid 1px;*/
     border-radius: 5px;
     float: left;
@@ -677,19 +677,25 @@ li.fans #is-follow-or-not{
     }
 
     .body_bg .container_60{
-        width: 350px;
+        width: 100%;
     }
     div.fans{
-        padding-left: 10px;
+        padding: 0px;
         background: none;
     }
     .container.body_bg{
-        padding: 20px;
+        /*padding: 20px;*/
+        padding-top: 3px;
     }
     li.fans{
         height: 170px;
-        width: 340px;
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 3px;
         border: solid 10px rgba(255,255,255,0.4);
+    }
+    li.fans .fans-border{
+         width: 100%;
     }
     .nav-mobile{
         display: block;
@@ -713,7 +719,7 @@ li.fans #is-follow-or-not{
         width: 100%;
         background: rgba(255,230,175,0.4);
     }
-    div.article-author .profile .article-userinfo{
+    body.user_posts div.article-author .profile .article-userinfo{
          display: block;
          margin-top: -46px;
     }
