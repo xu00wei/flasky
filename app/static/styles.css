@@ -5,6 +5,9 @@ body{
     helvetica, "Hiragino Sans GB", "Microsoft YaHei", 
     "WenQuanYi Micro Hei", sans-serif;
 }
+body.follows{
+    background: #F2E5D2;
+}
 .post img{
     width: 100%;
 }
@@ -43,11 +46,13 @@ em {
     width:1000px;
 }
 .container.body_bg{
-    background: url('index_bg.png') no-repeat;
-    background-position: center 0;
-    background-size: 100% 100%;
-    padding-top: 284px;
-    background-color: #5eb5ea;
+    background: url('fans_bg.jpg') no-repeat;
+    background-position: center -140px;
+    padding-top: 20px;
+    background-color: #F2E5D2;
+}
+.container.body_bg ul.pagination{
+     opacity: 0.9;
 }
 .profile-thumbnail {
     position: absolute;
@@ -556,7 +561,7 @@ div.login .form .form-group{
     margin: 0 0 20px 0;
 }
 div.login .form .form-control{
-    width: auto;
+    width: 195px;
     float: right;
 }
 div.index-opacity{
@@ -708,6 +713,10 @@ li.fans #is-follow-or-not{
         width: 100%;
         background: rgba(255,230,175,0.4);
     }
+    div.article-author .profile .article-userinfo{
+         display: block;
+         margin-top: -46px;
+    }
     .followed-by-border {
         display: none;
     }
@@ -754,7 +763,7 @@ li.fans #is-follow-or-not{
     }
        div.article-content{
        width: 100%;
-       margin: 55px 0 0 0;
+       margin: 0;
     }
 
     .container .navbar-collapse{
