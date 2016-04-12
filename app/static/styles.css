@@ -258,10 +258,12 @@ div.article-author{
 }
 div.back-index li{
     margin: 10px 5px;
+    height: 34px;
+    width: 140px;
     list-style-type: none;
 }
 div.back-index a{
-    padding: 15px;
+    padding: 2px 42px;
     background: none;
     border-radius: 20px;
     color: rgba(87,41,15,0.8);
