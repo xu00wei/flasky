@@ -15,6 +15,7 @@ def login():
     form = LoginForm() # 生成登入表单
     if form.validate_on_submit(): # 如果提交表单
         user = User.query.filter_by(email=form.email.data).first() # 查询数据库中的帐号
+        print user
         if user is not None and user.verify_password(form.password.data): # 验证密码
             if not user.confirmed:
                 uid = user.generate_auth_id_token()
@@ -28,14 +29,18 @@ def login():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+   #  print form.validate_on_submit()
+    # print not form.validate_email(form.email)
+    # print not form.validate_username(form.username)
+
     if form.validate_on_submit() \
     and not form.validate_email(form.email) \
     and not form.validate_username(form.username):
+        print "??"
         user = User(email=form.email.data,
                     username=form.username.data,
                     password=form.password.data)
         db.session.add(user)
-        db.session.commit()
         token = user.generate_confirmation_token()
         send_email(user.email, '确认您的帐号', 'auth/email/confirm', user=user, token=token)
         flash('认证邮件已经发送至您的邮箱,请您在一个小时内完成认证!')

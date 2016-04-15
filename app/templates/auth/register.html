@@ -18,11 +18,13 @@ class="login register"
         </div>
         <div class="login-info">
             <div class="col-md-4">
+                {% from "_macros.html" import render_field %}
                 <form method="POST">
-                {{ form.email(placeholder="邮箱") }}
-                {{ form.username(placeholder="用户名") }}
-                {{ form.password(placeholder="密码") }}
-                {{ form.password2(placeholder="确认密码") }}
+                {{ form.csrf_token }}
+                {{ render_field(form.email, placeholder="邮箱") }}
+                {{ render_field(form.username, placeholder="用户名") }}
+                {{ render_field(form.password, placeholder="密码") }}
+                {{ render_field(form.password2, placeholder="确认密码") }}
                 {{ form.submit() }}
                 </form>
             </div>

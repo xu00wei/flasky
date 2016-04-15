@@ -7,7 +7,7 @@ from flask import current_app, request, url_for
 from datetime import datetime
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from . import db, login_manager
-import bleach
+# import bleach
 
 # 加载用户的回调函数，若用户不存在则返回None
 @login_manager.user_loader
@@ -100,7 +100,7 @@ class User(UserMixin, db.Model):
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
         if self.role is None:
-            if self.email == current_app.nonfig['FLASK_ADMIN']:
+            if self.email == current_app.config['FLASK_ADMIN']:
                 self.role_id = Role.query.filter_by(permissions=0xff).first().id
             else:
                 self.role_id = Role.query.filter_by(default=True).first().id
