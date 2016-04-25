@@ -168,6 +168,14 @@ def user(username):
         # return render_template('user_posts.html', user=user, posts=posts)
     # return render_template('user.html',user=user, posts=posts)
 
+@main.route('/test/<username>')
+def test_username(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        abort(404)
+    posts = user.posts.order_by(Post.timestamp.desc()).all()
+    return render_template('user.html',user=user,posts=posts)
+
 @main.route('/user/<username>/posts')
 def user_posts(username):
     session['posts_request'] = True

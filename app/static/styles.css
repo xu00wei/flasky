@@ -521,7 +521,7 @@ textarea.form-control{
     /*background-color: #005F6F;*/
     background: url('index_bg.png') no-repeat center center;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 100% 100%;
 
 }
 .index2 .index-bgcolor{
@@ -774,6 +774,9 @@ li.fans #is-follow-or-not{
        div.article-content{
        width: 100%;
        margin: 0;
+    }
+    .index-bgcolor{
+        background-size: cover;
     }
 
     .container .navbar-collapse{
