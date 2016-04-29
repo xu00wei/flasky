@@ -96,7 +96,8 @@ def writing():
     if current_user.can(Permission.WRITE_ARTICLES) and form.validate_on_submit():
         post = Post(title=form.title.data,
                     body=form.body.data,
-                    author=current_user._get_current_object())
+                    author=current_user._get_current_object(),
+                    read = 0)
         db.session.add(post)
         return redirect(url_for(".user_posts", username = current_user.username))
     return render_template('writing.html', form=form)
@@ -119,7 +120,7 @@ def post(id):
             return redirect(url_for('auth.login'))
         comment = Comment(body=form.body.data,
                           post=post,
-                          author=current_user._get_current_object()
+                          author=current_user._get_current_object(),
                           )
         db.session.add(comment)
         flash('评论提交成功')
