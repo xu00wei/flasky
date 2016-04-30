@@ -147,6 +147,7 @@ class User(UserMixin, db.Model):
 
     def generate_confirmation_token(self, expiration=3600): # 有效时限3600秒
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        print self.id
         return s.dumps({'confirm': self.id}) # 将自身id生成令牌字符串
 
     def generate_reset_password_token(self, expiration=3600):
