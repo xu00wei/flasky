@@ -176,6 +176,7 @@ ul.posts li.post div.post-body{
     padding-top: 20px;
     margin-bottom: 10px;
     text-overflow: ellipsis;
+    cursor: pointer;
     overflow: hidden;
 }
 ul.posts {
