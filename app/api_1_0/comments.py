@@ -19,6 +19,7 @@ def get_comments_json():
         'next_page': next_page,
         'count': pagination.total
     })
+
 @api.route('/posts/<int:id>/comments/')
 def get_post_comments(id):
     post = Post.query.filter_by(id=id).first()
